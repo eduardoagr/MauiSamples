@@ -1,0 +1,87 @@
+<ContentPage
+    x:Class="FireChat.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:vm="clr-namespace:FireChat.ViewModels"
+    Title="Login"
+    x:DataType="vm:LoginPageViewModel"
+    BackgroundColor="#f7f8fa"
+    HideSoftInputOnTapped="True">
+
+    <VerticalStackLayout
+        Padding="16"
+        Spacing="20">
+
+        <!--  App Title  -->
+        <Label
+            FontAttributes="Bold"
+            FontSize="32"
+            HorizontalTextAlignment="Center"
+            Text="Welcome to FireChat"
+            TextColor="{StaticResource Primary}" />
+
+        <!--  App Logo  -->
+        <Image
+            HeightRequest="120"
+            HorizontalOptions="Center"
+            Source="firebase.png"
+            VerticalOptions="Center"
+            WidthRequest="120" />
+
+        <!--  Username Field  -->
+        <inputLayout:SfTextInputLayout
+            ContainerType="Outlined"
+            Hint="Username"
+            InputViewPadding="10,5,0,5"
+            LeadingViewPosition="Outside"
+            OutlineCornerRadius="12">
+            <inputLayout:SfTextInputLayout.LeadingView>
+                <Image
+                    HeightRequest="24"
+                    Source="user.png"
+                    WidthRequest="24" />
+            </inputLayout:SfTextInputLayout.LeadingView>
+            <Entry />
+        </inputLayout:SfTextInputLayout>
+
+        <!--  Password Field  -->
+        <inputLayout:SfTextInputLayout
+            ContainerType="Outlined"
+            Hint="Password"
+            InputViewPadding="10,5,0,5"
+            LeadingViewPosition="Outside"
+            OutlineCornerRadius="12">
+            <inputLayout:SfTextInputLayout.LeadingView>
+                <Image
+                    HeightRequest="28"
+                    Source="password.png"
+                    WidthRequest="28" />
+            </inputLayout:SfTextInputLayout.LeadingView>
+            <Entry IsPassword="True" />
+        </inputLayout:SfTextInputLayout>
+
+        <!--  Login Button  -->
+        <Button
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding LoginCommand}"
+            CornerRadius="25"
+            FontAttributes="Bold"
+            HeightRequest="54"
+            Text="Login"
+            TextColor="{StaticResource White}" />
+
+
+        <!--  Register Button  -->
+
+        <Label
+            Margin="0,20,0,0"
+            HorizontalOptions="Center"
+            Text="Do not have an account, register"
+            TextColor="{StaticResource HighlightBlue}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

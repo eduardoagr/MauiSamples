@@ -1,0 +1,21 @@
+﻿global using CommunityToolkit.Maui;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+
+global using Firebase.Auth;
+global using Firebase.Auth.Providers;
+
+global using FireChat.Constants;
+global using FireChat.ViewModels;
+global using FireChat.Views;
+global using FireChat.Views.PopUps;
+
+global using Microsoft.Extensions.Logging;
+
+global using Syncfusion.Licensing;
+global using Syncfusion.Maui.Core.Hosting;
+global using Syncfusion.Maui.Popup;
+
+global using System.Diagnostics;
+global using System.Threading.Tasks;
+

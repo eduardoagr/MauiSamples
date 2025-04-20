@@ -1,0 +1,127 @@
+<sfPopup:SfPopup
+    x:Class="FireChat.Views.PopUps.RegisterPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+    xmlns:vm="clr-namespace:FireChat.ViewModels"
+    Padding="10"
+    x:DataType="vm:LoginPageViewModel"
+    AnimationMode="Zoom"
+    HeightRequest="600"
+    WidthRequest="600">
+
+    <!--  Header Section  -->
+    <sfPopup:SfPopup.HeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="{StaticResource Primary}">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    HorizontalTextAlignment="Center"
+                    Text="Create an Account"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </sfPopup:SfPopup.HeaderTemplate>
+
+    <!--  Content Section  -->
+    <sfPopup:SfPopup.ContentTemplate>
+        <DataTemplate>
+
+            <Grid
+                Padding="10"
+                RowDefinitions="Auto,Auto,Auto,Auto,*"
+                RowSpacing="10">
+
+                <!--  Username Field  -->
+                <inputLayout:SfTextInputLayout
+                    Hint="Username"
+                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image
+                            HeightRequest="24"
+                            Source="user.png"
+                            WidthRequest="24" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                    <Entry Text="{Binding LocalUser.Username}" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Email Field  -->
+                <inputLayout:SfTextInputLayout
+                    Grid.Row="1"
+                    Hint="Email"
+                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image
+                            HeightRequest="24"
+                            Source="email.png"
+                            WidthRequest="24" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                    <Entry
+                        Keyboard="Email"
+                        Text="{Binding LocalUser.Email}" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Password Field  -->
+                <inputLayout:SfTextInputLayout
+                    Grid.Row="2"
+                    Hint="Password"
+                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image
+                            HeightRequest="24"
+                            Source="password.png"
+                            WidthRequest="24" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                    <Entry
+                        IsPassword="True"
+                        Text="{Binding LocalUser.Password}" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Confirm Password Field  -->
+                <inputLayout:SfTextInputLayout
+                    Grid.Row="3"
+                    Hint="Confirm Password"
+                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image
+                            HeightRequest="24"
+                            Source="password.png"
+                            WidthRequest="24" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                    <Entry
+                        IsPassword="True"
+                        Text="{Binding LocalUser.ConfirmPassword}" />
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Buttons  -->
+                <Grid
+                    Grid.Row="4"
+                    VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        BackgroundColor="{StaticResource Gray300}"
+                        Command="{Binding ClosePopUpCommand}"
+                        CornerRadius="8"
+                        Text="Cancel"
+                        TextColor="{StaticResource TextDark}"
+                        WidthRequest="120" />
+                    <Button
+                        Grid.Column="1"
+                        BackgroundColor="{StaticResource FireOrange}"
+                        Command="{Binding SignUpCommand}"
+                        CornerRadius="8"
+                        Text="Sign Up"
+                        TextColor="{StaticResource White}"
+                        WidthRequest="120" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </sfPopup:SfPopup.ContentTemplate>
+</sfPopup:SfPopup>
