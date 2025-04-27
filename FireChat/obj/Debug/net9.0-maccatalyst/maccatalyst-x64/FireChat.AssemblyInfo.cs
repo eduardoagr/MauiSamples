@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FireChat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+93b39376253f3bf67fd1573428a17cbba3fbbdd4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+9762698df5771de15cc450f8fdf63f4415d1f7be")]
 [assembly: System.Reflection.AssemblyProductAttribute("FireChat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FireChat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

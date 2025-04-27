@@ -1,6 +1,6 @@
 ﻿namespace FireChat.Model {
 
-    public partial class LocalUser : ObservableObject {
+    public partial class LocalUser : BaseViewModel {
 
         [ObservableProperty]
         string _username;

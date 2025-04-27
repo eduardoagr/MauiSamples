@@ -2,11 +2,48 @@
     x:Class="FireChat.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:local="clr-namespace:FireChat"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
-    Title="Login"
     x:DataType="vm:MainViewModel"
-    BackgroundColor="#f2f2f2">
-    
-    
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+        <Grid>
+            <Label
+                Padding="10"
+                FontSize="Medium"
+                Text="Lets customize your profile"
+                VerticalTextAlignment="Center" />
+            <Label
+                Padding="10"
+                FontFamily="MaterialSymbol"
+                FontSize="Medium"
+                HorizontalTextAlignment="End"
+                Text="{Static local:IconFont.Logout}"
+                VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
+        <StackLayout>
+            <Label
+                Margin="0,40,0,0"
+                FontFamily="MaterialSymbol"
+                FontSize="100"
+                HorizontalOptions="Center"
+                Text="{Static local:IconFont.Camera}" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

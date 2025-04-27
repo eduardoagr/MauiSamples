@@ -6,6 +6,7 @@ global using Firebase.Auth;
 global using Firebase.Auth.Providers;
 
 global using FireChat.Constants;
+global using FireChat.Model;
 global using FireChat.ViewModels;
 global using FireChat.Views;
 global using FireChat.Views.PopUps;

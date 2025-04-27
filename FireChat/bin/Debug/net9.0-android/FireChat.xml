@@ -53,6 +53,15 @@
         <member name="P:FireChat.ViewModels.LoginPageViewModel.SignUpCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:FireChat.ViewModels.LoginPageViewModel.SignUp"/>.</summary>
         </member>
+        <member name="T:FireChat.ViewModels.MainViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:FireChat.ViewModels.MainViewModel._signOutCommand">
+            <summary>The backing field for <see cref="P:FireChat.ViewModels.MainViewModel.signOutCommand"/>.</summary>
+        </member>
+        <member name="P:FireChat.ViewModels.MainViewModel.signOutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:FireChat.ViewModels.MainViewModel.signOut"/>.</summary>
+        </member>
         <member name="T:FireChat.Resource">
             <summary>
             Android Resource Designer class.

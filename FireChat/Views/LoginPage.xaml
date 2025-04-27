@@ -3,10 +3,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:local="clr-namespace:FireChat"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
-    Title="Login"
     x:DataType="vm:LoginPageViewModel"
-    BackgroundColor="#f7f8fa"
     HideSoftInputOnTapped="True">
 
     <VerticalStackLayout
@@ -31,41 +30,37 @@
 
         <!--  Username Field  -->
         <inputLayout:SfTextInputLayout
-            ContainerType="Outlined"
             Hint="Username"
-            InputViewPadding="10,5,0,5"
-            LeadingViewPosition="Outside"
-            OutlineCornerRadius="12">
+            Style="{StaticResource RegisterSfTextInputLayoutStyle}">
             <inputLayout:SfTextInputLayout.LeadingView>
-                <Image
-                    HeightRequest="24"
-                    Source="user.png"
-                    WidthRequest="24" />
+                <Label
+                    FontFamily="MaterialSymbol"
+                    FontSize="Large"
+                    Text="{Static local:IconFont.Email}" />
             </inputLayout:SfTextInputLayout.LeadingView>
-            <Entry />
+            <Entry Text="{Binding LocalUser.Email}" />
         </inputLayout:SfTextInputLayout>
 
         <!--  Password Field  -->
         <inputLayout:SfTextInputLayout
-            ContainerType="Outlined"
             Hint="Password"
-            InputViewPadding="10,5,0,5"
-            LeadingViewPosition="Outside"
-            OutlineCornerRadius="12">
+            Style="{StaticResource RegisterSfTextInputLayoutStyle}">
             <inputLayout:SfTextInputLayout.LeadingView>
-                <Image
-                    HeightRequest="28"
-                    Source="password.png"
-                    WidthRequest="28" />
+                <Label
+                    FontFamily="MaterialSymbol"
+                    FontSize="Large"
+                    Text="{Static local:IconFont.Password}" />
             </inputLayout:SfTextInputLayout.LeadingView>
-            <Entry IsPassword="True" />
+            <Entry
+                IsPassword="True"
+                Text="{Binding LocalUser.Password}" />
         </inputLayout:SfTextInputLayout>
 
         <!--  Login Button  -->
         <Button
             BackgroundColor="{StaticResource Primary}"
             Command="{Binding LoginCommand}"
-            CornerRadius="25"
+            CornerRadius="8"
             FontAttributes="Bold"
             HeightRequest="54"
             Text="Login"

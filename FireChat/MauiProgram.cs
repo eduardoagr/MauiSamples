@@ -11,11 +11,7 @@ public static class MauiProgram {
             .ConfigureSyncfusionCore()
             .ConfigureFonts(fonts => {
                 fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialSymbol");
-                fonts.AddFont("FontAwesome6FreeBrands.otf", "FontAwesomeBrands");
-                fonts.AddFont("FontAwesome6FreeRegular.otf", "FontAwesomeRegular");
-                fonts.AddFont("FontAwesome6FreeSolid.otf", "FontAwesomeSolid");
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("MauiMaterialAssets.ttf", "MauiMaterial");
             });
 #if DEBUG
         builder.Logging.AddDebug();
@@ -34,14 +30,14 @@ public static class MauiProgram {
 
 
 
-        builder.Services.AddSingleton<RegisterPopUp>();
+        builder.Services.AddTransient<RegisterPopUp>();
         builder.Services.AddSingleton<AppShell>();
 
-        builder.Services.AddSingleton<MainViewModel>();
+        builder.Services.AddTransient<MainViewModel>();
         builder.Services.AddSingleton<MainPage>();
 
         builder.Services.AddSingleton<LoginPage>();
-        builder.Services.AddSingleton<LoginPageViewModel>();
+        builder.Services.AddTransient<LoginPageViewModel>();
 
         return builder.Build();
     }

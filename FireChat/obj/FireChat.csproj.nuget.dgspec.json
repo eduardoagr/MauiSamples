@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\FireChat.csproj": {}
+    "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\FireChat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\FireChat.csproj": {
+    "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\FireChat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\FireChat.csproj",
+        "projectUniqueName": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\FireChat.csproj",
         "projectName": "FireChat",
-        "projectPath": "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\FireChat.csproj",
+        "projectPath": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\FireChat.csproj",
         "packagesPath": "C:\\Users\\egome\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\obj\\",
+        "outputPath": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

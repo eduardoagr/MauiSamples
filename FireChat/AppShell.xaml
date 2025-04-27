@@ -4,12 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FireChat"
     xmlns:views="clr-namespace:FireChat.Views"
-    FlyoutBehavior="Disabled">
+    FlyoutBehavior="{OnIdiom Desktop=Locked,
+                             Phone=Disabled}">
 
     <ShellContent
-        Title="Main"
         ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="MainPage"
-        Shell.NavBarIsVisible="False" />
+        FlyoutItemIsVisible="False"
+        Route="LoginPage"
+        Shell.NavBarIsVisible="True" />
 
 </Shell>

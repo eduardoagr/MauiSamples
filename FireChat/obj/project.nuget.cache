@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "79uvK6HSu/U=",
+  "dgSpecHash": "lbmeGuL6BzY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\egome\\source\\repos\\MauiSamples\\FireChat\\FireChat.csproj",
+  "projectFilePath": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\FireChat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\egome\\.nuget\\packages\\communitytoolkit.maui\\11.2.0\\communitytoolkit.maui.11.2.0.nupkg.sha512",
     "C:\\Users\\egome\\.nuget\\packages\\communitytoolkit.maui.core\\11.2.0\\communitytoolkit.maui.core.11.2.0.nupkg.sha512",
@@ -131,12 +131,5 @@
     "C:\\Users\\egome\\.nuget\\packages\\xamarin.kotlinx.serialization.core.jvm\\1.7.3.2\\xamarin.kotlinx.serialization.core.jvm.1.7.3.2.nupkg.sha512",
     "C:\\Users\\egome\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Response status code does not indicate success: 401 (Unauthorized)."
-    }
-  ]
+  "logs": []
 }

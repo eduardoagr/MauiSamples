@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Existing Palette -->
+    <!--  Existing Palette  -->
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
@@ -27,23 +27,49 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
-    <!-- Brushes for Existing Palette -->
-    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
-    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
-    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}" />
-    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}" />
-    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}" />
+    <!--  Brushes for Existing Palette  -->
+    <SolidColorBrush
+        x:Key="PrimaryBrush"
+        Color="{StaticResource Primary}" />
+    <SolidColorBrush
+        x:Key="SecondaryBrush"
+        Color="{StaticResource Secondary}" />
+    <SolidColorBrush
+        x:Key="TertiaryBrush"
+        Color="{StaticResource Tertiary}" />
+    <SolidColorBrush
+        x:Key="WhiteBrush"
+        Color="{StaticResource White}" />
+    <SolidColorBrush
+        x:Key="BlackBrush"
+        Color="{StaticResource Black}" />
 
-    <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}" />
-    <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}" />
-    <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}" />
-    <SolidColorBrush x:Key="Gray400Brush" Color="{StaticResource Gray400}" />
-    <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}" />
-    <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}" />
-    <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}" />
-    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}" />
+    <SolidColorBrush
+        x:Key="Gray100Brush"
+        Color="{StaticResource Gray100}" />
+    <SolidColorBrush
+        x:Key="Gray200Brush"
+        Color="{StaticResource Gray200}" />
+    <SolidColorBrush
+        x:Key="Gray300Brush"
+        Color="{StaticResource Gray300}" />
+    <SolidColorBrush
+        x:Key="Gray400Brush"
+        Color="{StaticResource Gray400}" />
+    <SolidColorBrush
+        x:Key="Gray500Brush"
+        Color="{StaticResource Gray500}" />
+    <SolidColorBrush
+        x:Key="Gray600Brush"
+        Color="{StaticResource Gray600}" />
+    <SolidColorBrush
+        x:Key="Gray900Brush"
+        Color="{StaticResource Gray900}" />
+    <SolidColorBrush
+        x:Key="Gray950Brush"
+        Color="{StaticResource Gray950}" />
 
-    <!-- FireChat Colors -->
+    <!--  FireChat Colors  -->
     <Color x:Key="FireOrange">#FF6F00</Color>
     <Color x:Key="FireOrangeDark">#E65A00</Color>
     <Color x:Key="BackgroundLight">#F7F8FA</Color>
@@ -51,12 +77,24 @@
     <Color x:Key="HighlightBlue">#007AFF</Color>
     <Color x:Key="ErrorRed">#D60000</Color>
 
-    <!-- Brushes for FireChat Colors -->
-    <SolidColorBrush x:Key="FireOrangeBrush" Color="{StaticResource FireOrange}" />
-    <SolidColorBrush x:Key="FireOrangeDarkBrush" Color="{StaticResource FireOrangeDark}" />
-    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}" />
-    <SolidColorBrush x:Key="TextDarkBrush" Color="{StaticResource TextDark}" />
-    <SolidColorBrush x:Key="HighlightBlueBrush" Color="{StaticResource HighlightBlue}" />
-    <SolidColorBrush x:Key="ErrorRedBrush" Color="{StaticResource ErrorRed}" />
+    <!--  Brushes for FireChat Colors  -->
+    <SolidColorBrush
+        x:Key="FireOrangeBrush"
+        Color="{StaticResource FireOrange}" />
+    <SolidColorBrush
+        x:Key="FireOrangeDarkBrush"
+        Color="{StaticResource FireOrangeDark}" />
+    <SolidColorBrush
+        x:Key="BackgroundLightBrush"
+        Color="{StaticResource BackgroundLight}" />
+    <SolidColorBrush
+        x:Key="TextDarkBrush"
+        Color="{StaticResource TextDark}" />
+    <SolidColorBrush
+        x:Key="HighlightBlueBrush"
+        Color="{StaticResource HighlightBlue}" />
+    <SolidColorBrush
+        x:Key="ErrorRedBrush"
+        Color="{StaticResource ErrorRed}" />
 
 </ResourceDictionary>

@@ -1,20 +1,30 @@
-﻿using FireChat.Model;
+﻿namespace FireChat.ViewModels;
 
-namespace FireChat.ViewModels;
-
-public partial class LoginPageViewModel(FirebaseAuthClient _authClient) : ObservableObject {
+public partial class LoginPageViewModel : BaseViewModel {
 
     public required Action openPopUp;
     public required Action closePopUp;
 
+    private FirebaseAuthClient _authClient;
+
+    public LoginPageViewModel(FirebaseAuthClient authClient) {
+        _authClient = authClient;
+
+        if(authClient.User != null) {
+            Shell.Current.GoToAsync($"{nameof(MainPage)}");
+        }
+    }
+
     [ObservableProperty]
     LocalUser _localUser = new();
+
 
     [RelayCommand]
     async Task Login() {
 
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        await _authClient.SignInWithEmailAndPasswordAsync(LocalUser.Email, LocalUser.Password);
 
+        await Shell.Current.GoToAsync($"{nameof(MainPage)}");
     }
 
     [RelayCommand]
@@ -39,7 +49,7 @@ public partial class LoginPageViewModel(FirebaseAuthClient _authClient) : Observ
 
         closePopUp.Invoke();
 
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        await Shell.Current.GoToAsync($"{nameof(MainPage)}");
     }
 
 }

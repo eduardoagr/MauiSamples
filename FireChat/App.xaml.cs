@@ -1,6 +1,5 @@
-﻿using FireChat.Constants;
+﻿namespace FireChat;
 
-namespace FireChat; 
 public partial class App : Application {
 
     private readonly AppShell _appShell;

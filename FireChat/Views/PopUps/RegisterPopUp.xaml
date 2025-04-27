@@ -3,17 +3,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:local="clr-namespace:FireChat"
     xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
     Padding="10"
-    x:DataType="vm:LoginPageViewModel"
     AnimationMode="Zoom"
     HeightRequest="600"
     WidthRequest="600">
 
     <!--  Header Section  -->
     <sfPopup:SfPopup.HeaderTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="vm:LoginPageViewModel">
             <Grid BackgroundColor="{StaticResource Primary}">
                 <Label
                     FontAttributes="Bold"
@@ -28,8 +28,7 @@
 
     <!--  Content Section  -->
     <sfPopup:SfPopup.ContentTemplate>
-        <DataTemplate>
-
+        <DataTemplate x:DataType="vm:LoginPageViewModel">
             <Grid
                 Padding="10"
                 RowDefinitions="Auto,Auto,Auto,Auto,*"
@@ -40,10 +39,10 @@
                     Hint="Username"
                     Style="{StaticResource RegisterSfTextInputLayoutStyle}">
                     <inputLayout:SfTextInputLayout.LeadingView>
-                        <Image
-                            HeightRequest="24"
-                            Source="user.png"
-                            WidthRequest="24" />
+                        <Label
+                            FontFamily="MaterialSymbol"
+                            FontSize="Large"
+                            Text="{Static local:IconFont.Supervised_user_circle}" />
                     </inputLayout:SfTextInputLayout.LeadingView>
                     <Entry Text="{Binding LocalUser.Username}" />
                 </inputLayout:SfTextInputLayout>
@@ -54,10 +53,10 @@
                     Hint="Email"
                     Style="{StaticResource RegisterSfTextInputLayoutStyle}">
                     <inputLayout:SfTextInputLayout.LeadingView>
-                        <Image
-                            HeightRequest="24"
-                            Source="email.png"
-                            WidthRequest="24" />
+                        <Label
+                            FontFamily="MaterialSymbol"
+                            FontSize="Large"
+                            Text="{Static local:IconFont.Email}" />
                     </inputLayout:SfTextInputLayout.LeadingView>
                     <Entry
                         Keyboard="Email"
@@ -70,10 +69,10 @@
                     Hint="Password"
                     Style="{StaticResource RegisterSfTextInputLayoutStyle}">
                     <inputLayout:SfTextInputLayout.LeadingView>
-                        <Image
-                            HeightRequest="24"
-                            Source="password.png"
-                            WidthRequest="24" />
+                        <Label
+                            FontFamily="MaterialSymbol"
+                            FontSize="Large"
+                            Text="{Static local:IconFont.Password}" />
                     </inputLayout:SfTextInputLayout.LeadingView>
                     <Entry
                         IsPassword="True"
@@ -86,10 +85,10 @@
                     Hint="Confirm Password"
                     Style="{StaticResource RegisterSfTextInputLayoutStyle}">
                     <inputLayout:SfTextInputLayout.LeadingView>
-                        <Image
-                            HeightRequest="24"
-                            Source="password.png"
-                            WidthRequest="24" />
+                        <Entry
+                            FontFamily="MaterialSymbol"
+                            IsPassword="True"
+                            Text="{Binding LocalUser.Password}" />
                     </inputLayout:SfTextInputLayout.LeadingView>
                     <Entry
                         IsPassword="True"
