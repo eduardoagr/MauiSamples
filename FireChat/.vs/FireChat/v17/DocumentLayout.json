@@ -3,8 +3,51 @@
   "WorkspaceRootPath": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\views\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:views\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\controls\\materialentry.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:controls\\materialentry.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\controls\\materialentry.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:controls\\materialentry.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\viewmodels\\loginpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:viewmodels\\loginpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\egome\\AppData\\Local\\Temp\\.vsdbgsrc\\f1a30d42532ed97cd5d09290b8e5acf0f872f6ab\\Views_LoginPage.xaml.sg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\views\\popups\\registerpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:views\\popups\\registerpopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|c:\\users\\egome\\documents\\mauisamples\\firechat\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0327841C-5943-029C-7E8D-5DA32E123815}|FireChat.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +62,157 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\LoginPage.xaml.cs",
+              "RelativeToolTip": "Views\\LoginPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:51:40.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Views_LoginPage.xaml.sg.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\AppData\\Local\\Temp\\.vsdbgsrc\\f1a30d42532ed97cd5d09290b8e5acf0f872f6ab\\Views_LoginPage.xaml.sg.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\f1a30d42532ed97cd5d09290b8e5acf0f872f6ab\\Views_LoginPage.xaml.sg.cs",
+              "ToolTip": "C:\\Users\\egome\\AppData\\Local\\Temp\\.vsdbgsrc\\f1a30d42532ed97cd5d09290b8e5acf0f872f6ab\\Views_LoginPage.xaml.sg.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\f1a30d42532ed97cd5d09290b8e5acf0f872f6ab\\Views_LoginPage.xaml.sg.cs [Read Only]",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:50:00.496Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MaterialEntry.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Controls\\MaterialEntry.xaml.cs",
+              "RelativeDocumentMoniker": "Controls\\MaterialEntry.xaml.cs",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Controls\\MaterialEntry.xaml.cs",
+              "RelativeToolTip": "Controls\\MaterialEntry.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCkAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:29:46.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MaterialEntry.xaml",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Controls\\MaterialEntry.xaml",
+              "RelativeDocumentMoniker": "Controls\\MaterialEntry.xaml",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Controls\\MaterialEntry.xaml",
+              "RelativeToolTip": "Controls\\MaterialEntry.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T14:28:34.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:23:07.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
               "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T14:36:15.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T13:58:05.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\ViewModels\\LoginPageViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginPageViewModel.cs",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\ViewModels\\LoginPageViewModel.cs",
+              "RelativeToolTip": "ViewModels\\LoginPageViewModel.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAqwCoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T13:54:18.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RegisterPopUp.xaml",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\PopUps\\RegisterPopUp.xaml",
+              "RelativeDocumentMoniker": "Views\\PopUps\\RegisterPopUp.xaml",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\PopUps\\RegisterPopUp.xaml",
+              "RelativeToolTip": "Views\\PopUps\\RegisterPopUp.xaml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAuwEwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T14:01:20.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "Views\\LoginPage.xaml",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\LoginPage.xaml",
+              "RelativeToolTip": "Views\\LoginPage.xaml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwCoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T14:00:28.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.g.i.cs",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
+              "RelativeToolTip": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAUwEQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:07:23.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Views\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\egome\\Documents\\MauiSamples\\FireChat\\Views\\MainPage.xaml",
+              "RelativeToolTip": "Views\\MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-29T13:55:55.725Z",
               "EditorCaption": ""
             }
           ]

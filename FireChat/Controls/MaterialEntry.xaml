@@ -1,0 +1,23 @@
+<ContentView
+    x:Class="FireChat.Controls.MaterialEntry"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:FireChat.Controls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
+
+    <inputLayout:SfTextInputLayout
+        x:DataType="controls:MaterialEntry"
+        Hint="{Binding Hint}"
+        Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+        <inputLayout:SfTextInputLayout.LeadingView>
+            <Label
+                FontFamily="MaterialSymbol"
+                FontSize="Medium"
+                Text="{Binding Icon}"
+                TextColor="{Binding IconColor}" />
+        </inputLayout:SfTextInputLayout.LeadingView>
+        <Entry
+            IsPassword="{Binding IsPassword}"
+            Text="{Binding Text}" />
+    </inputLayout:SfTextInputLayout>
+</ContentView>

@@ -5,8 +5,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:local="clr-namespace:FireChat"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
-    x:DataType="vm:MainViewModel"
-    Shell.FlyoutBehavior="Disabled">
+    x:DataType="vm:MainViewModel">
 
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" />
@@ -17,7 +16,7 @@
             <Label
                 Padding="10"
                 FontSize="Medium"
-                Text="Lets customize your profile"
+                Text="{Binding Username, StringFormat='Lets customize your profile {0}'}"
                 VerticalTextAlignment="Center" />
             <Label
                 Padding="10"
@@ -27,7 +26,7 @@
                 Text="{Static local:IconFont.Logout}"
                 VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                    <TapGestureRecognizer Command="{Binding SignOutCommand}" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>

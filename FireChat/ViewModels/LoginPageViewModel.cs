@@ -7,6 +7,10 @@ public partial class LoginPageViewModel : BaseViewModel {
 
     private FirebaseAuthClient _authClient;
 
+    [ObservableProperty]
+    LocalUser _localUser = new();
+
+
     public LoginPageViewModel(FirebaseAuthClient authClient) {
         _authClient = authClient;
 
@@ -14,10 +18,6 @@ public partial class LoginPageViewModel : BaseViewModel {
             Shell.Current.GoToAsync($"{nameof(MainPage)}");
         }
     }
-
-    [ObservableProperty]
-    LocalUser _localUser = new();
-
 
     [RelayCommand]
     async Task Login() {
@@ -28,7 +28,7 @@ public partial class LoginPageViewModel : BaseViewModel {
     }
 
     [RelayCommand]
-    async Task Register() {
+    void Register() {
         openPopUp.Invoke();
 
     }

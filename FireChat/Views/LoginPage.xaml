@@ -5,6 +5,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:local="clr-namespace:FireChat"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
+    xmlns:controls="clr-namespace:FireChat.Controls"
     x:DataType="vm:LoginPageViewModel"
     HideSoftInputOnTapped="True">
 
@@ -29,32 +30,17 @@
             WidthRequest="120" />
 
         <!--  Username Field  -->
-        <inputLayout:SfTextInputLayout
+        <controls:MaterialEntry
             Hint="Username"
-            Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-            <inputLayout:SfTextInputLayout.LeadingView>
-                <Label
-                    FontFamily="MaterialSymbol"
-                    FontSize="Large"
-                    Text="{Static local:IconFont.Email}" />
-            </inputLayout:SfTextInputLayout.LeadingView>
-            <Entry Text="{Binding LocalUser.Email}" />
-        </inputLayout:SfTextInputLayout>
+            Style="{StaticResource RegisterSfTextInputLayoutStyle}"
+            Text="{Binding LocalUser.Username}"/>
 
         <!--  Password Field  -->
-        <inputLayout:SfTextInputLayout
+        <controls:MaterialEntry
             Hint="Password"
-            Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-            <inputLayout:SfTextInputLayout.LeadingView>
-                <Label
-                    FontFamily="MaterialSymbol"
-                    FontSize="Large"
-                    Text="{Static local:IconFont.Password}" />
-            </inputLayout:SfTextInputLayout.LeadingView>
-            <Entry
-                IsPassword="True"
-                Text="{Binding LocalUser.Password}" />
-        </inputLayout:SfTextInputLayout>
+            IsPassword="True"
+            Style="{StaticResource RegisterSfTextInputLayoutStyle}"
+            Text="{Binding LocalUser.Password}"/>
 
         <!--  Login Button  -->
         <Button

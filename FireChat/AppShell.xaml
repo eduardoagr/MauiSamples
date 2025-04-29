@@ -11,6 +11,7 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         FlyoutItemIsVisible="False"
         Route="LoginPage"
+        Shell.FlyoutBehavior="Disabled"
         Shell.NavBarIsVisible="True" />
 
 </Shell>

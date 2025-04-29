@@ -6,7 +6,7 @@ public partial class App : Application {
 
     public App(AppShell appShell) {
 
-        SyncfusionLicenseProvider.RegisterLicense(Keys.SyncfusionKey);
+        SyncfusionLicenseProvider.RegisterLicense(Credentials.SyncfusionKey);
 
         InitializeComponent();
         _appShell = appShell;

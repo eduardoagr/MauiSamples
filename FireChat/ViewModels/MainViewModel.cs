@@ -2,18 +2,22 @@
 
 public partial class MainViewModel : BaseViewModel {
 
-    private FirebaseAuthClient _authClient;
-    private LoginPageViewModel _loginPageViewModel;
+    [ObservableProperty]
+    string _username;
 
-    public MainViewModel(FirebaseAuthClient authClient, LoginPageViewModel loginPageViewModel) {
+    FirebaseAuthClient _authClient;
+
+    public MainViewModel(FirebaseAuthClient authClient) {
         _authClient = authClient;
-        _loginPageViewModel = loginPageViewModel;
+        _username = _authClient.User.Info.DisplayName ?? "User";
+
+
     }
 
-
-
     [RelayCommand]
-    void signOut() {
+    void SignOut() {
+
+        Shell.Current.GoToAsync("..");
 
     }
 }

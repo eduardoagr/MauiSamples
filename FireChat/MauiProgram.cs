@@ -19,7 +19,7 @@ public static class MauiProgram {
         builder.Services.AddSingleton(new FirebaseAuthClient
             (new FirebaseAuthConfig {
 
-                ApiKey = Keys.FirebaseAuthApiKey,
+                ApiKey = Credentials.FirebaseAuthApiKey,
                 AuthDomain = "firechat-5db0b.firebaseapp.com",
                 Providers = [
                      new EmailProvider(),

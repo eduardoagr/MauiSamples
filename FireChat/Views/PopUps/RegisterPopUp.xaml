@@ -2,6 +2,7 @@
     x:Class="FireChat.Views.PopUps.RegisterPopUp"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:FireChat.Controls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:local="clr-namespace:FireChat"
     xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
@@ -35,66 +36,35 @@
                 RowSpacing="10">
 
                 <!--  Username Field  -->
-                <inputLayout:SfTextInputLayout
+
+                <controls:MaterialEntry
                     Hint="Username"
-                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-                    <inputLayout:SfTextInputLayout.LeadingView>
-                        <Label
-                            FontFamily="MaterialSymbol"
-                            FontSize="Large"
-                            Text="{Static local:IconFont.Supervised_user_circle}" />
-                    </inputLayout:SfTextInputLayout.LeadingView>
-                    <Entry Text="{Binding LocalUser.Username}" />
-                </inputLayout:SfTextInputLayout>
+                    Text="{Binding LocalUser.Username}"
+                    IconColor="Black" />
 
                 <!--  Email Field  -->
-                <inputLayout:SfTextInputLayout
+                <controls:MaterialEntry
                     Grid.Row="1"
                     Hint="Email"
-                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-                    <inputLayout:SfTextInputLayout.LeadingView>
-                        <Label
-                            FontFamily="MaterialSymbol"
-                            FontSize="Large"
-                            Text="{Static local:IconFont.Email}" />
-                    </inputLayout:SfTextInputLayout.LeadingView>
-                    <Entry
-                        Keyboard="Email"
-                        Text="{Binding LocalUser.Email}" />
-                </inputLayout:SfTextInputLayout>
+                    Text="{Binding LocalUser.Email}"
+                    IconColor="Black" />
 
                 <!--  Password Field  -->
-                <inputLayout:SfTextInputLayout
+                <controls:MaterialEntry
                     Grid.Row="2"
                     Hint="Password"
-                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-                    <inputLayout:SfTextInputLayout.LeadingView>
-                        <Label
-                            FontFamily="MaterialSymbol"
-                            FontSize="Large"
-                            Text="{Static local:IconFont.Password}" />
-                    </inputLayout:SfTextInputLayout.LeadingView>
-                    <Entry
-                        IsPassword="True"
-                        Text="{Binding LocalUser.Password}" />
-                </inputLayout:SfTextInputLayout>
+                    IsPassword="True"
+                    Text="{Binding LocalUser.Password}"
+                    IconColor="Black" />
 
                 <!--  Confirm Password Field  -->
-                <inputLayout:SfTextInputLayout
+                <controls:MaterialEntry
                     Grid.Row="3"
                     Hint="Confirm Password"
-                    Style="{StaticResource RegisterSfTextInputLayoutStyle}">
-                    <inputLayout:SfTextInputLayout.LeadingView>
-                        <Entry
-                            FontFamily="MaterialSymbol"
-                            IsPassword="True"
-                            Text="{Binding LocalUser.Password}" />
-                    </inputLayout:SfTextInputLayout.LeadingView>
-                    <Entry
-                        IsPassword="True"
-                        Text="{Binding LocalUser.ConfirmPassword}" />
-                </inputLayout:SfTextInputLayout>
-
+                    IsPassword="True"
+                    Text="{Binding LocalUser.ConfirmPassword}"
+                    IconColor="Black" />
+                
                 <!--  Buttons  -->
                 <Grid
                     Grid.Row="4"
