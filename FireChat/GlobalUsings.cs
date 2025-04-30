@@ -14,6 +14,7 @@ global using FireChat.Views.PopUps;
 global using Microsoft.Extensions.Logging;
 
 global using Syncfusion.Licensing;
+global using Syncfusion.Maui.Core;
 global using Syncfusion.Maui.Core.Hosting;
 global using Syncfusion.Maui.Popup;
 

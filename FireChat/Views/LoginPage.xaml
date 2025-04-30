@@ -32,14 +32,14 @@
         <!--  Username Field  -->
         <controls:MaterialEntry
             Hint="Username"
-            Style="{StaticResource RegisterSfTextInputLayoutStyle}"
+            Icon="{Static local:IconFont.Person}"
             Text="{Binding LocalUser.Username}"/>
 
         <!--  Password Field  -->
         <controls:MaterialEntry
             Hint="Password"
+            Icon="{Static local:IconFont.Lock}"
             IsPassword="True"
-            Style="{StaticResource RegisterSfTextInputLayoutStyle}"
             Text="{Binding LocalUser.Password}"/>
 
         <!--  Login Button  -->

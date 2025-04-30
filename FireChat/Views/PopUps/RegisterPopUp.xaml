@@ -39,32 +39,40 @@
 
                 <controls:MaterialEntry
                     Hint="Username"
+                    Icon="{Static local:IconFont.Person}"
+                    IconColor="Black"
                     Text="{Binding LocalUser.Username}"
-                    IconColor="Black" />
+                    TextColor="Black" />
 
                 <!--  Email Field  -->
                 <controls:MaterialEntry
                     Grid.Row="1"
                     Hint="Email"
+                    Icon="{Static local:IconFont.Email}"
+                    IconColor="Black"
                     Text="{Binding LocalUser.Email}"
-                    IconColor="Black" />
+                    TextColor="Black" />
 
                 <!--  Password Field  -->
                 <controls:MaterialEntry
                     Grid.Row="2"
                     Hint="Password"
+                    Icon="{Static local:IconFont.Lock}"
+                    IconColor="Black"
                     IsPassword="True"
                     Text="{Binding LocalUser.Password}"
-                    IconColor="Black" />
+                    TextColor="Black" />
 
                 <!--  Confirm Password Field  -->
                 <controls:MaterialEntry
                     Grid.Row="3"
                     Hint="Confirm Password"
+                    Icon="{Static local:IconFont.Lock}"
+                    IconColor="Black"
                     IsPassword="True"
-                    Text="{Binding LocalUser.ConfirmPassword}"
-                    IconColor="Black" />
-                
+                    Text="{Binding LocalUser.ConfirmPassword}" />
+
+
                 <!--  Buttons  -->
                 <Grid
                     Grid.Row="4"
