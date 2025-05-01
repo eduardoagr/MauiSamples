@@ -1,4 +1,11 @@
-/FireChat/.vs
-/FireChat/.vs/FireChat/CopilotIndices/17.13.444.19527
-*.db
-/FireChat/.vs/FireChat/CopilotIndices
+# .NET build output directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.vs
+
+# Environment files
+.env
