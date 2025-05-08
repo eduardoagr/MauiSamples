@@ -1,4 +1,6 @@
-﻿namespace FireChat;
+﻿using CommunityToolkit.Maui.Views;
+
+namespace FireChat;
 
 public partial class AppShell : Shell {
 
@@ -23,5 +25,22 @@ public partial class AppShell : Shell {
                     break;
             }
         });
+    }
+
+    private void AvatarImage_PointerEntered(object sender, PointerEventArgs e) {
+
+        if(sender is AvatarView avatarView) {
+            avatarView.Text = Icons.MateriallFontGlyphs.Edit;
+            avatarView.BackgroundColor = Colors.DarkGrey;
+        }
+    }
+
+    private void AvatarImage_PointerExited(object sender, PointerEventArgs e) {
+
+        if(sender is AvatarView avatarView) {
+            avatarView.Text = Icons.MateriallFontGlyphs.Add_a_photo;
+            avatarView.BackgroundColor = Colors.Transparent;
+        }
+
     }
 }

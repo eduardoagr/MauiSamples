@@ -22,7 +22,7 @@
         public string ImagePath { get; set; }
 
         [FirestoreProperty]
-        public string StatusMessage { get; set; }
+        public string StatusMessage { get; set; } = "Hey there! I'm using FireChat!";
 
         [FirestoreProperty]
         public bool OnlineStatus { get; set; } = true;

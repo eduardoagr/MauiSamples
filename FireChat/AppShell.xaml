@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FireChat.Controls"
-    xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:icons="clr-namespace:FireChat.Icons"
     xmlns:model="clr-namespace:FireChat.Model"
     xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
@@ -56,51 +55,71 @@
                 AbsoluteY="20"
                 AcceptButtonText="Save and close"
                 AcceptCommand="{Binding SavePopUpContentCommand}"
+                HeaderHeight="90"
                 HeightRequest="400"
                 RelativePosition="AlignTopRight"
                 RelativeView="{x:Reference UserProfileImage}"
                 ShowFooter="True"
-                ShowHeader="False"
+                ShowHeader="True"
                 ShowOverlayAlways="False"
                 WidthRequest="400">
+                <sfPopup:SfPopup.HeaderTemplate>
+                    <DataTemplate x:DataType="model:LocalUser">
+                        <toolkit:AvatarView
+                            Margin="20,10,0,0"
+                            BorderColor="Black"
+                            BorderWidth="1"
+                            CornerRadius="80"
+                            FontFamily="MaterialSymbol"
+                            FontSize="20"
+                            HeightRequest="80"
+                            HorizontalOptions="Start"
+                            ImageSource="{Binding ImagePath}"
+                            Text="{Static icons:MateriallFontGlyphs.Add_a_photo}"
+                            TextColor="Black"
+                            WidthRequest="80">
+                            <toolkit:AvatarView.GestureRecognizers>
+                                <PointerGestureRecognizer
+                                    x:Name="AvatarImage"
+                                    x:DataType="vm:AppShellViewModel"
+                                    PointerEntered="AvatarImage_PointerEntered"
+                                    PointerExited="AvatarImage_PointerExited" />
+                            </toolkit:AvatarView.GestureRecognizers>
+                            <toolkit:AvatarView.Behaviors>
+                                <toolkit:EventToCommandBehavior
+                                    x:DataType="vm:AppShellViewModel"
+                                    Command="{Binding AvatarImageClickedCommand}" />
+                            </toolkit:AvatarView.Behaviors>
+                        </toolkit:AvatarView>
+                    </DataTemplate>
+                </sfPopup:SfPopup.HeaderTemplate>
                 <sfPopup:SfPopup.PopupStyle>
                     <sfPopup:PopupStyle CornerRadius="0" />
                 </sfPopup:SfPopup.PopupStyle>
                 <sfPopup:SfPopup.ContentTemplate>
                     <DataTemplate x:DataType="model:LocalUser">
-                        <VerticalStackLayout
+                        <Grid
                             Padding="20"
-                            Spacing="10">
-                            <effectsView:SfEffectsView
-                                LongPressEffects="Selection"
-                                SelectionBackground="Gray">
-                                <toolkit:AvatarView
-                                    BorderColor="Black"
-                                    BorderWidth="1"
-                                    CornerRadius="80"
-                                    FontFamily="MaterialSymbol"
-                                    FontSize="50"
-                                    HeightRequest="80"
-                                    HorizontalOptions="Start"
-                                    ImageSource="{Binding ImagePath}"
-                                    Text="{Static icons:MateriallFontGlyphs.Add_a_photo}"
-                                    TextColor="Black"
-                                    WidthRequest="80" />
-                            </effectsView:SfEffectsView>
-
+                            HorizontalOptions="Center"
+                            RowDefinitions="80,80"
+                            RowSpacing="5"
+                            VerticalOptions="Center">
                             <controls:MaterialEntry
                                 Hint="Name"
                                 HintColor="Black"
                                 HorizontalOptions="Start"
                                 ShowIcon="False"
-                                Text="{Binding Username}" />
+                                Text="{Binding Username}"
+                                TextColor="Black" />
                             <controls:MaterialEntry
+                                Grid.Row="1"
                                 Hint="Status"
                                 HintColor="Black"
                                 HorizontalOptions="Start"
                                 ShowIcon="False"
-                                Text="{Binding StatusMessage}" />
-                        </VerticalStackLayout>
+                                Text="{Binding StatusMessage}"
+                                TextColor="Black" />
+                        </Grid>
                     </DataTemplate>
                 </sfPopup:SfPopup.ContentTemplate>
             </sfPopup:SfPopup>

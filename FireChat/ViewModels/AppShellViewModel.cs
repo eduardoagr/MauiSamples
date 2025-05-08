@@ -3,7 +3,8 @@
 public partial class AppShellViewModel : BaseViewModel {
 
     readonly FirebaseAuthClient _authClient;
-    private readonly WeakReferenceMessenger _messenger;
+    readonly WeakReferenceMessenger _messenger;
+    readonly IMediaPicker _mediaPicker;
 
     [ObservableProperty]
     LocalUser localUser = new();
@@ -11,7 +12,7 @@ public partial class AppShellViewModel : BaseViewModel {
     [ObservableProperty]
     string? _userName;
 
-    public AppShellViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger) {
+    public AppShellViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger, IMediaPicker mediaPicker) {
 
         _authClient = authClient;
 
@@ -20,6 +21,7 @@ public partial class AppShellViewModel : BaseViewModel {
         }
 
         _messenger = messenger;
+        _mediaPicker = mediaPicker;
     }
 
     [RelayCommand]
@@ -41,5 +43,18 @@ public partial class AppShellViewModel : BaseViewModel {
     void SavePopUpContent() {
 
         _messenger.Send("SavePopUpContent");
+    }
+
+    [RelayCommand]
+    async Task AvatarImageClicked() {
+
+        await Shell.Current.DisplayActionSheet("Choose an option", "Cancel", null, "Take a photo", "Choose from gallery");
+        var result = await _mediaPicker.PickPhotoAsync(new MediaPickerOptions {
+            Title = "Pick a photo"
+        });
+        if(result != null) {
+            var stream = await result.OpenReadAsync();
+            LocalUser.ImagePath = stream.ToString();
+        }
     }
 }
