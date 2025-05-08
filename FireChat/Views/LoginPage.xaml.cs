@@ -4,18 +4,24 @@ public partial class LoginPage : ContentPage {
 
     readonly RegisterPopUp _registerPopUp;
 
-    public LoginPage(LoginPageViewModel loginPageViewModel, RegisterPopUp registerPopUp) {
+    public LoginPage(LoginPageViewModel loginPageViewModel, RegisterPopUp registerPopUp,
+        WeakReferenceMessenger messenger) {
+
         InitializeComponent();
+
         BindingContext = loginPageViewModel;
 
         _registerPopUp = registerPopUp;
 
-        loginPageViewModel.openPopUp = () => {
-            _registerPopUp.IsOpen = true;
-        };
-
-        loginPageViewModel.closePopUp = () => {
-            _registerPopUp.IsOpen = false;
-        };
+        messenger.Register<string>(this, (recipient, message) => {
+            switch(message) {
+                case "OpenPopUp":
+                    _registerPopUp.IsOpen = true;
+                    break;
+                case "ClosePopUp":
+                    _registerPopUp.IsOpen = false;
+                    break;
+            }
+        });
     }
 }

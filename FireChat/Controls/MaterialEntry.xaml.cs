@@ -3,14 +3,7 @@ namespace FireChat.Controls;
 public partial class MaterialEntry : ContentView {
 
     public static readonly BindableProperty HintProperty = BindableProperty.Create(
-        nameof(Hint), typeof(string), typeof(MaterialEntry), string.Empty,
-        BindingMode.TwoWay, null, OnHintPropertyChanged);
-
-    private static void OnHintPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            inputLayout.Hint = (string)newValue;
-        }
-    }
+        nameof(Hint), typeof(string), typeof(MaterialEntry));
 
     public string Hint {
         get => (string)GetValue(HintProperty);
@@ -18,17 +11,8 @@ public partial class MaterialEntry : ContentView {
     }
 
     public static readonly BindableProperty IconProperty = BindableProperty.Create(
-        nameof(Icon), typeof(string), typeof(MaterialEntry), string.Empty,
-        BindingMode.TwoWay, null, OnIconPropertyChanged);
+        nameof(Icon), typeof(string), typeof(MaterialEntry));
 
-    private static void OnIconPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            // Assuming the leading view is a Label
-            if(inputLayout.LeadingView is Label iconLabel) {
-                iconLabel.Text = (string)newValue;
-            }
-        }
-    }
 
     public string Icon {
         get => (string)GetValue(IconProperty);
@@ -36,16 +20,9 @@ public partial class MaterialEntry : ContentView {
     }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
-        nameof(Text), typeof(string), typeof(MaterialEntry), string.Empty,
-        BindingMode.TwoWay, null, OnTextPropertyChanged);
+        nameof(Text), typeof(string), typeof(MaterialEntry),
+        string.Empty, BindingMode.TwoWay);
 
-    private static void OnTextPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            if(inputLayout.Content is Entry entry) {
-                entry.Text = (string)newValue;
-            }
-        }
-    }
 
     public string Text {
         get => (string)GetValue(TextProperty);
@@ -53,16 +30,7 @@ public partial class MaterialEntry : ContentView {
     }
 
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(
-        nameof(IconColor), typeof(Color), typeof(MaterialEntry), Colors.Black,
-        BindingMode.TwoWay, null, OnIconColorPropertyChanged);
-
-    private static void OnIconColorPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            if(inputLayout.LeadingView is Label iconLabel) {
-                iconLabel.TextColor = (Color)newValue;
-            }
-        }
-    }
+        nameof(IconColor), typeof(Color), typeof(MaterialEntry));
 
     public Color IconColor {
         get => (Color)GetValue(IconColorProperty);
@@ -70,16 +38,8 @@ public partial class MaterialEntry : ContentView {
     }
 
     public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(
-        nameof(IsPassword), typeof(bool), typeof(MaterialEntry), false,
-        BindingMode.TwoWay, null, OnIsPasswordPropertyChanged);
+        nameof(IsPassword), typeof(bool), typeof(MaterialEntry));
 
-    private static void OnIsPasswordPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            if(inputLayout.Content is Entry entry) {
-                entry.IsPassword = (bool)newValue;
-            }
-        }
-    }
 
     public bool IsPassword {
         get => (bool)GetValue(IsPasswordProperty);
@@ -87,23 +47,34 @@ public partial class MaterialEntry : ContentView {
     }
 
     public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
-        nameof(TextColor), typeof(Color), typeof(MaterialEntry),
-        Colors.Black,
-        BindingMode.TwoWay, null, OnTextColorPropertyChanged);
+        nameof(TextColor), typeof(Color), typeof(MaterialEntry));
 
-
-    private static void OnTextColorPropertyChanged(BindableObject bindable, object oldValue, object newValue) {
-        if(bindable is MaterialEntry materialEntry && materialEntry.Content is SfTextInputLayout inputLayout) {
-            if(inputLayout.Content is Entry entry) {
-                entry.TextColor = (Color)newValue;
-            }
-        }
-    }
 
     public Color TextColor {
         get => (Color)GetValue(TextColorProperty);
         set => SetValue(TextColorProperty, value);
     }
+
+
+    public static readonly BindableProperty ShowIconProperty = BindableProperty.Create(
+        nameof(ShowIcon), typeof(bool), typeof(MaterialEntry));
+
+
+    public bool ShowIcon {
+        get => (bool)GetValue(ShowIconProperty);
+        set => SetValue(ShowIconProperty, value);
+    }
+
+    public static readonly BindableProperty HintColorProperty = BindableProperty.Create(
+    nameof(HintColor), typeof(Color), typeof(MaterialEntry),
+    Colors.White,
+    BindingMode.TwoWay);
+
+    public Color HintColor {
+        get => (Color)GetValue(HintColorProperty);
+        set => SetValue(HintColorProperty, value);
+    }
+
 
     public MaterialEntry() {
         InitializeComponent();

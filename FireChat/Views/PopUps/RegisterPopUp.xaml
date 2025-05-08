@@ -3,8 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FireChat.Controls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:local="clr-namespace:FireChat"
+    xmlns:icons="clr-namespace:FireChat.Icons"
     xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
     Padding="10"
@@ -32,51 +31,54 @@
         <DataTemplate x:DataType="vm:LoginPageViewModel">
             <Grid
                 Padding="10"
+                BackgroundColor="#D147755A"
                 RowDefinitions="Auto,Auto,Auto,Auto,*"
                 RowSpacing="10">
 
                 <!--  Username Field  -->
-
                 <controls:MaterialEntry
                     Hint="Username"
-                    Icon="{Static local:IconFont.Person}"
-                    IconColor="Black"
+                    Icon="{Static icons:MateriallFontGlyphs.Person}"
+                    IconColor="White"
                     Text="{Binding LocalUser.Username}"
-                    TextColor="Black" />
+                    TextColor="White" />
 
                 <!--  Email Field  -->
                 <controls:MaterialEntry
                     Grid.Row="1"
                     Hint="Email"
-                    Icon="{Static local:IconFont.Email}"
-                    IconColor="Black"
+                    Icon="{Static icons:MateriallFontGlyphs.Email}"
+                    IconColor="White"
                     Text="{Binding LocalUser.Email}"
-                    TextColor="Black" />
+                    TextColor="White" />
+
 
                 <!--  Password Field  -->
                 <controls:MaterialEntry
                     Grid.Row="2"
                     Hint="Password"
-                    Icon="{Static local:IconFont.Lock}"
-                    IconColor="Black"
+                    Icon="{Static icons:MateriallFontGlyphs.Lock}"
+                    IconColor="White"
                     IsPassword="True"
                     Text="{Binding LocalUser.Password}"
-                    TextColor="Black" />
+                    TextColor="White" />
+
 
                 <!--  Confirm Password Field  -->
                 <controls:MaterialEntry
                     Grid.Row="3"
                     Hint="Confirm Password"
-                    Icon="{Static local:IconFont.Lock}"
-                    IconColor="Black"
+                    Icon="{Static icons:MateriallFontGlyphs.Lock}"
+                    IconColor="White"
                     IsPassword="True"
-                    Text="{Binding LocalUser.ConfirmPassword}" />
+                    Text="{Binding LocalUser.ConfirmPassword}"
+                    TextColor="White" />
 
 
                 <!--  Buttons  -->
                 <Grid
                     Grid.Row="4"
-                    VerticalOptions="End">
+                    VerticalOptions="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />

@@ -2,17 +2,15 @@
 
 public partial class App : Application {
 
-    private readonly AppShell _appShell;
+    public static MainWindow? WindowInstance { get; private set; }
 
-    public App(AppShell appShell) {
+    public App(MainWindow mainWindow) {
 
         SyncfusionLicenseProvider.RegisterLicense(Credentials.SyncfusionKey);
 
         InitializeComponent();
-        _appShell = appShell;
+        WindowInstance = mainWindow;
     }
 
-    protected override Window CreateWindow(IActivationState? activationState) {
-        return new Window(_appShell);
-    }
+    protected override Window CreateWindow(IActivationState? activationState) => WindowInstance!;
 }

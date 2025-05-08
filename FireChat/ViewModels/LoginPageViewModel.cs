@@ -2,20 +2,30 @@
 
 public partial class LoginPageViewModel : BaseViewModel {
 
-    public required Action openPopUp;
-    public required Action closePopUp;
-
-    private FirebaseAuthClient _authClient;
+    private readonly FirebaseAuthClient _authClient;
+    private readonly WeakReferenceMessenger _messenger;
+    private readonly FirestoreService _firestoreService;
 
     [ObservableProperty]
     LocalUser _localUser = new();
 
+    public LoginPageViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger,
+        FirestoreService firestoreService) {
 
-    public LoginPageViewModel(FirebaseAuthClient authClient) {
+        _messenger = messenger;
         _authClient = authClient;
+        _firestoreService = firestoreService;
+
+        ChechSingIn(authClient);
+
+    }
+
+    private static async void ChechSingIn(FirebaseAuthClient authClient) {
+
+        await Task.Delay(1000);
 
         if(authClient.User != null) {
-            Shell.Current.GoToAsync($"{nameof(MainPage)}");
+            await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
         }
     }
 
@@ -24,19 +34,21 @@ public partial class LoginPageViewModel : BaseViewModel {
 
         await _authClient.SignInWithEmailAndPasswordAsync(LocalUser.Email, LocalUser.Password);
 
-        await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+        await _firestoreService.CreateUserAsync(LocalUser, _authClient.User.Uid);
+
+        await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
     }
 
     [RelayCommand]
     void Register() {
-        openPopUp.Invoke();
+        _messenger.Send("OpenPopUp");
 
     }
 
     // Popup Commands
     [RelayCommand]
     void ClosePopUp() {
-        closePopUp.Invoke();
+        _messenger.Send("ClosePopUp");
     }
 
     [RelayCommand]
@@ -47,9 +59,8 @@ public partial class LoginPageViewModel : BaseViewModel {
             LocalUser.Password,
             LocalUser.Username);
 
-        closePopUp.Invoke();
+        _messenger.Send("ClosePopUp");
 
-        await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
     }
-
 }

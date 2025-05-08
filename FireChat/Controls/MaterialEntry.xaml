@@ -4,22 +4,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FireChat.Controls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    x:DataType="controls:MaterialEntry">
+    x:Name="MaterialDresignInput">
 
     <inputLayout:SfTextInputLayout
-        Hint="{Binding Hint}"
-        ShowLeadingView="True"
-        Style="{StaticResource RegisterSfTextInputLayoutStyle}">
+        x:DataType="controls:MaterialEntry"
+        Hint="{Binding Hint, Source={x:Reference MaterialDresignInput}}"
+        ShowLeadingView="{Binding ShowIcon, Source={x:Reference MaterialDresignInput}}"
+        Style="{StaticResource MaterialDresignInputStyle}">
+        <inputLayout:SfTextInputLayout.HintLabelStyle>
+            <inputLayout:LabelStyle TextColor="{Binding HintColor, Source={x:Reference MaterialDresignInput}}" />
+        </inputLayout:SfTextInputLayout.HintLabelStyle>
         <inputLayout:SfTextInputLayout.LeadingView>
             <Label
                 FontFamily="MaterialSymbol"
                 FontSize="Medium"
-                Text="{Binding Icon}"
-                TextColor="{Binding IconColor}" />
+                Text="{Binding Icon, Source={x:Reference MaterialDresignInput}}"
+                TextColor="{Binding IconColor, Source={x:Reference MaterialDresignInput}}" />
         </inputLayout:SfTextInputLayout.LeadingView>
         <Entry
-            IsPassword="{Binding IsPassword}"
-            Text="{Binding Text}"
-            TextColor="{Binding TextColor}" />
+            IsPassword="{Binding IsPassword, Source={x:Reference MaterialDresignInput}}"
+            Text="{Binding Text, Source={x:Reference MaterialDresignInput}}"
+            TextColor="{Binding TextColor, Source={x:Reference MaterialDresignInput}}" />
     </inputLayout:SfTextInputLayout>
 </ContentView>

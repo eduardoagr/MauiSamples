@@ -1,0 +1,12 @@
+<Window
+    x:Class="FireChat.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Titlebar">
+
+    <Window.TitleBar>
+        <TitleBar
+            Background="#556934B6"
+            HeightRequest="32" />
+    </Window.TitleBar>
+</Window>

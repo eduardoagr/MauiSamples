@@ -1,4 +1,4 @@
-﻿using Firebase.Auth.Repository;
+﻿using FireChat.Handlers;
 
 namespace FireChat;
 
@@ -13,6 +13,10 @@ public static class MauiProgram {
                 fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialSymbol");
                 fonts.AddFont("MauiMaterialAssets.ttf", "MauiMaterial");
             });
+
+        // Apply the global borderless handler
+        BorderlessEntryHandler.ApplyCustomHandler();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
@@ -29,15 +33,24 @@ public static class MauiProgram {
             }));
 
 
+        builder.Services.AddSingleton<AppShellViewModel>();
 
         builder.Services.AddTransient<RegisterPopUp>();
         builder.Services.AddSingleton<AppShell>();
 
-        builder.Services.AddTransient<MainViewModel>();
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<ChatPageViewModel>();
+        builder.Services.AddSingleton<ChatPage>();
 
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddTransient<LoginPageViewModel>();
+
+        builder.Services.AddSingleton<MainWindow>();
+
+        builder.Services.AddSingleton(WeakReferenceMessenger.Default);
+
+        builder.Services.AddSingleton(MediaPicker.Default);
+
+        builder.Services.AddSingleton<FirestoreService>();
 
         return builder.Build();
     }

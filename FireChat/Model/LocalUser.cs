@@ -1,17 +1,30 @@
 ﻿namespace FireChat.Model {
 
-    public partial class LocalUser : BaseViewModel {
+    [FirestoreData]
+    public class LocalUser {
 
-        [ObservableProperty]
-        string _username;
+        [FirestoreProperty]
+        public string Id { get; set; }
 
-        [ObservableProperty]
-        string _email;
+        [FirestoreProperty]
+        public string Username { get; set; }
 
-        [ObservableProperty]
-        string _password;
+        [FirestoreProperty]
+        public string Email { get; set; }
 
-        [ObservableProperty]
-        string _confirmPassword;
+        [FirestoreProperty]
+        public string Password { get; set; }
+
+        [FirestoreProperty]
+        public string ConfirmPassword { get; set; }
+
+        [FirestoreProperty]
+        public string ImagePath { get; set; }
+
+        [FirestoreProperty]
+        public string StatusMessage { get; set; }
+
+        [FirestoreProperty]
+        public bool OnlineStatus { get; set; } = true;
     }
 }

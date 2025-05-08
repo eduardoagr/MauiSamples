@@ -2,16 +2,110 @@
     x:Class="FireChat.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FireChat"
+    xmlns:controls="clr-namespace:FireChat.Controls"
+    xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:icons="clr-namespace:FireChat.Icons"
+    xmlns:model="clr-namespace:FireChat.Model"
+    xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:FireChat.Views"
+    xmlns:vm="clr-namespace:FireChat.ViewModels"
+    x:DataType="vm:AppShellViewModel"
     FlyoutBehavior="{OnIdiom Desktop=Locked,
-                             Phone=Disabled}">
+                             Phone=Disabled}"
+    Shell.FlyoutWidth="60">
 
     <ShellContent
         ContentTemplate="{DataTemplate views:LoginPage}"
         FlyoutItemIsVisible="False"
         Route="LoginPage"
-        Shell.FlyoutBehavior="Disabled"
-        Shell.NavBarIsVisible="True" />
+        Shell.FlyoutBehavior="Disabled" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:ChatPage}"
+        Route="ChatPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="MaterialSymbol"
+                Glyph="{Static icons:MateriallFontGlyphs.Chat}"
+                Color="White" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <Shell.FlyoutFooter>
+        <Grid
+            Padding="10"
+            BackgroundColor="Transparent"
+            HeightRequest="48">
+            <Image x:Name="UserProfileImage">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="MaterialSymbol"
+                        Glyph="{Static icons:MateriallFontGlyphs.Account_circle}"
+                        Color="White" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        x:DataType="vm:AppShellViewModel"
+                        Command="{Binding OpenProfileCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <sfPopup:SfPopup
+                x:Name="UserProfilePopup"
+                AbsoluteY="20"
+                AcceptButtonText="Save and close"
+                AcceptCommand="{Binding SavePopUpContentCommand}"
+                HeightRequest="400"
+                RelativePosition="AlignTopRight"
+                RelativeView="{x:Reference UserProfileImage}"
+                ShowFooter="True"
+                ShowHeader="False"
+                ShowOverlayAlways="False"
+                WidthRequest="400">
+                <sfPopup:SfPopup.PopupStyle>
+                    <sfPopup:PopupStyle CornerRadius="0" />
+                </sfPopup:SfPopup.PopupStyle>
+                <sfPopup:SfPopup.ContentTemplate>
+                    <DataTemplate x:DataType="model:LocalUser">
+                        <VerticalStackLayout
+                            Padding="20"
+                            Spacing="10">
+                            <effectsView:SfEffectsView
+                                LongPressEffects="Selection"
+                                SelectionBackground="Gray">
+                                <toolkit:AvatarView
+                                    BorderColor="Black"
+                                    BorderWidth="1"
+                                    CornerRadius="80"
+                                    FontFamily="MaterialSymbol"
+                                    FontSize="50"
+                                    HeightRequest="80"
+                                    HorizontalOptions="Start"
+                                    ImageSource="{Binding ImagePath}"
+                                    Text="{Static icons:MateriallFontGlyphs.Add_a_photo}"
+                                    TextColor="Black"
+                                    WidthRequest="80" />
+                            </effectsView:SfEffectsView>
+
+                            <controls:MaterialEntry
+                                Hint="Name"
+                                HintColor="Black"
+                                HorizontalOptions="Start"
+                                ShowIcon="False"
+                                Text="{Binding Username}" />
+                            <controls:MaterialEntry
+                                Hint="Status"
+                                HintColor="Black"
+                                HorizontalOptions="Start"
+                                ShowIcon="False"
+                                Text="{Binding StatusMessage}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </sfPopup:SfPopup.ContentTemplate>
+            </sfPopup:SfPopup>
+        </Grid>
+    </Shell.FlyoutFooter>
 
 </Shell>
+

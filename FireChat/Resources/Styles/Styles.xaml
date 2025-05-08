@@ -433,7 +433,7 @@
     <!--  Custom styles  -->
 
     <Style
-        x:Key="RegisterSfTextInputLayoutStyle"
+        x:Key="MaterialDresignInputStyle"
         TargetType="inputLayout:SfTextInputLayout">
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="InputViewPadding" Value="10,5,0,5" />
