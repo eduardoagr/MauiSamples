@@ -14,14 +14,12 @@ public partial class LoginPage : ContentPage {
         _registerPopUp = registerPopUp;
 
         messenger.Register<string>(this, (recipient, message) => {
-            switch(message) {
-                case "OpenPopUp":
-                    _registerPopUp.IsOpen = true;
-                    break;
-                case "ClosePopUp":
-                    _registerPopUp.IsOpen = false;
-                    break;
-            }
+
+            _registerPopUp.IsOpen = message switch {
+                "OpenPopUp" => true,
+                "ClosePopUp" => false,
+                _ => _registerPopUp.IsOpen // Preserve current state if message isn't recognized
+            };
         });
     }
 }
