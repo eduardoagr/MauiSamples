@@ -17,12 +17,9 @@ public partial class LoginPageViewModel : BaseViewModel {
         _firestoreService = firestoreService;
 
         ChechSingIn(authClient);
-
     }
 
     private static async void ChechSingIn(FirebaseAuthClient authClient) {
-
-        await Task.Delay(1000);
 
         if(authClient.User != null) {
             await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");

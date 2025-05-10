@@ -19,17 +19,12 @@ public partial class AppShellViewModel : BaseViewModel {
     public AppShellViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger, IMediaPicker mediaPicker) {
 
         _authClient = authClient;
-
-        if(_authClient.User != null) {
-            localUser.Username = _authClient.User.Info.DisplayName;
-            localUser.Email = _authClient.User.Info.Email;
-        }
-
         _messenger = messenger;
         _mediaPicker = mediaPicker;
 
         OptionsColletion = GetOptions();
     }
+
 
     [RelayCommand]
     async Task SignOut() {

@@ -6,8 +6,6 @@ public partial class AppShell : Shell {
 
     readonly WeakReferenceMessenger _messenger;
 
-    SfPopup _avatarPopUp;
-
     public AppShell(AppShellViewModel appShellViewModel, WeakReferenceMessenger messenger) {
 
         InitializeComponent();
@@ -31,18 +29,12 @@ public partial class AppShell : Shell {
 
     private void AvatarImage_PointerEntered(object sender, PointerEventArgs e) {
 
-        if(sender is AvatarView avatarView) {
-            avatarView.Text = Icons.MateriallFontGlyphs.Edit;
-            avatarView.BackgroundColor = Colors.DarkGrey;
-        }
+        AvatarViewSetUp(Icons.MateriallFontGlyphs.Add_a_photo, Colors.DarkGray, sender);
     }
 
     private void AvatarImage_PointerExited(object sender, PointerEventArgs e) {
 
-        if(sender is AvatarView avatarView) {
-            avatarView.Text = Icons.MateriallFontGlyphs.Add_a_photo;
-            avatarView.BackgroundColor = Colors.Transparent;
-        }
+        AvatarViewSetUp(Icons.MateriallFontGlyphs.Add_a_photo, Colors.Transparent, sender);
 
     }
 
@@ -51,6 +43,15 @@ public partial class AppShell : Shell {
         if(sender is AvatarView avatarView) {
             AvatarPopUp.RelativeView = avatarView; // Attach popup to AvatarView
             AvatarPopUp.IsOpen = true; // Open popup
+        }
+
+    }
+
+    private void AvatarViewSetUp(string glyph, Color BackgroudColor, object sender) {
+
+        if(sender is AvatarView avatarView) {
+            avatarView.Text = glyph;
+            avatarView.BackgroundColor = BackgroudColor;
         }
 
     }

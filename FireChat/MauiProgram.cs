@@ -1,4 +1,4 @@
-﻿using FireChat.Handlers;
+﻿
 
 namespace FireChat;
 
@@ -9,6 +9,7 @@ public static class MauiProgram {
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
             .ConfigureSyncfusionCore()
+            .UseSkiaSharp()
             .ConfigureFonts(fonts => {
                 fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialSymbol");
                 fonts.AddFont("MauiMaterialAssets.ttf", "MauiMaterial");
@@ -32,17 +33,19 @@ public static class MauiProgram {
                     Path.Combine(FileSystem.AppDataDirectory, "users.json"))
             }));
 
+        builder.Services.AddSingleton<WelcomePage>();
+        builder.Services.AddSingleton<WelcomePageViewModel>();
 
+        builder.Services.AddSingleton<AppShell>();
         builder.Services.AddSingleton<AppShellViewModel>();
 
         builder.Services.AddTransient<RegisterPopUp>();
-        builder.Services.AddSingleton<AppShell>();
-
-        builder.Services.AddTransient<ChatPageViewModel>();
-        builder.Services.AddSingleton<ChatPage>();
 
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddTransient<LoginPageViewModel>();
+
+        builder.Services.AddTransient<ChatPageViewModel>();
+        builder.Services.AddSingleton<ChatPage>();
 
         builder.Services.AddSingleton<MainWindow>();
 

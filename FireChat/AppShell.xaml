@@ -16,6 +16,13 @@
     Shell.FlyoutWidth="60">
 
     <ShellContent
+        ContentTemplate="{DataTemplate views:WelcomePage}"
+        FlyoutItemIsVisible="False"
+        Route="WelcomePage"
+        Shell.NavBarIsVisible="False"
+        Shell.FlyoutBehavior="Disabled" />
+
+    <ShellContent
         ContentTemplate="{DataTemplate views:LoginPage}"
         FlyoutItemIsVisible="False"
         Route="LoginPage"
@@ -28,9 +35,19 @@
             <FontImageSource
                 FontFamily="MaterialSymbol"
                 Glyph="{Static icons:MateriallFontGlyphs.Chat}"
-                Color="White" />
+                Color="{AppThemeBinding Dark={DynamicResource White},
+                                        Light={DynamicResource PrimaryDarkText}}" />
         </ShellContent.Icon>
     </ShellContent>
+
+    <TabBar IsVisible="{OnIdiom Phone=True, Desktop=False}">
+        <Tab
+            Title="Chats"
+            Icon="cat.png" />
+        <Tab
+            Title="Dogs"
+            Icon="dog.png" />
+    </TabBar>
 
     <Shell.FlyoutFooter>
         <Grid
@@ -42,7 +59,8 @@
                     <FontImageSource
                         FontFamily="MaterialSymbol"
                         Glyph="{Static icons:MateriallFontGlyphs.Account_circle}"
-                        Color="White" />
+                        Color="{AppThemeBinding Dark={DynamicResource White},
+                                                Light={DynamicResource PrimaryDarkText}}" />
                 </Image.Source>
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
@@ -65,24 +83,20 @@
                 <sfPopup:SfPopup.PopupStyle>
                     <sfPopup:PopupStyle
                         CornerRadius="8"
-                        PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
+                        HasShadow="True"
+                        PopupBackground="{AppThemeBinding Dark={DynamicResource Gray1000},
                                                           Light={DynamicResource White}}" />
                 </sfPopup:SfPopup.PopupStyle>
 
                 <sfPopup:SfPopup.ContentTemplate>
                     <DataTemplate>
-                        <Border StrokeThickness="2">
-                            <CollectionView
-                                x:Name="OptionCollectionView"
-                                Margin="10"
-                                ItemsSource="{Binding OptionsColletion}"
-                                SelectedItem="{Binding SelectedItem}"
-                                SelectionChangedCommand="{Binding SelectedOptionCommand}"
-                                SelectionMode="Single" />
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="8" />
-                            </Border.StrokeShape>
-                        </Border>
+                        <CollectionView
+                            x:Name="OptionCollectionView"
+                            Margin="10"
+                            ItemsSource="{Binding OptionsColletion}"
+                            SelectedItem="{Binding SelectedItem}"
+                            SelectionChangedCommand="{Binding SelectedOptionCommand}"
+                            SelectionMode="Single" />
                     </DataTemplate>
                 </sfPopup:SfPopup.ContentTemplate>
             </sfPopup:SfPopup>
@@ -106,7 +120,7 @@
                     <DataTemplate x:DataType="model:LocalUser">
                         <toolkit:AvatarView
                             Margin="20,10,0,0"
-                            BorderColor="{AppThemeBinding Dark={DynamicResource White},
+                            BorderColor="{AppThemeBinding Dark={DynamicResource Gray1000},
                                                           Light={DynamicResource PrimaryDarkText}}"
                             BorderWidth="1"
                             CornerRadius="80"
@@ -133,6 +147,7 @@
                 <sfPopup:SfPopup.PopupStyle>
                     <sfPopup:PopupStyle
                         CornerRadius="0"
+                        HasShadow="True"
                         PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
                                                           Light={DynamicResource White}}" />
                 </sfPopup:SfPopup.PopupStyle>
@@ -144,7 +159,7 @@
                             RowDefinitions="80,80"
                             RowSpacing="5"
                             VerticalOptions="Center">
-                            
+
                             <controls:MaterialEntry
                                 Hint="Username"
                                 HintColor="{AppThemeBinding Dark={DynamicResource White},
@@ -170,26 +185,36 @@
                 <sfPopup:SfPopup.FooterTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Button
+                            <Border
                                 Margin="20"
-                                BackgroundColor="{AppThemeBinding Dark={DynamicResource Gray900},
-                                                                  Light={DynamicResource White}}"
                                 HorizontalOptions="End"
-                                Text="Save"
-                                TextColor="{AppThemeBinding Dark={DynamicResource White},
-                                                            Light={DynamicResource PrimaryDarkText}}"
+                                StrokeShape="RoundRectangle 10"
                                 VerticalOptions="Center"
-                                WidthRequest="200">
-                                <Button.Behaviors>
-                                    <toolkit:TouchBehavior HoveredBackgroundColor="{AppThemeBinding Dark={DynamicResource FireOrange}, Light={DynamicResource White}}" />
-                                </Button.Behaviors>
-                            </Button>
+                                WidthRequest="100">
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="{AppThemeBinding Dark={DynamicResource White},
+                                                                Light={DynamicResource PrimaryDarkText}}"
+                                        Opacity="0.5"
+                                        Radius="15"
+                                        Offset="5,5" />
+                                </Border.Shadow>
+
+                                <Button
+                                    Padding="10"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding SignOutCommand}"
+                                    FontSize="16"
+                                    Text="Log out"
+                                    TextColor="{AppThemeBinding Dark={DynamicResource White},
+                                                                Light={DynamicResource PrimaryDarkText}}" />
+                            </Border>
+
                         </Grid>
                     </DataTemplate>
                 </sfPopup:SfPopup.FooterTemplate>
             </sfPopup:SfPopup>
         </Grid>
     </Shell.FlyoutFooter>
-
 </Shell>
 
