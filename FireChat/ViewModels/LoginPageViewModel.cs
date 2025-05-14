@@ -1,62 +1,49 @@
 ﻿namespace FireChat.ViewModels;
 
-public partial class LoginPageViewModel : BaseViewModel {
-
-    private readonly FirebaseAuthClient _authClient;
-    private readonly WeakReferenceMessenger _messenger;
-    private readonly FirestoreService _firestoreService;
+public partial class LoginPageViewModel(FirestoreService firestoreService,
+    FirebaseAuthClient firebaseAuth) : BaseViewModel {
 
     [ObservableProperty]
     LocalUser _localUser = new();
 
-    public LoginPageViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger,
-        FirestoreService firestoreService) {
-
-        _messenger = messenger;
-        _authClient = authClient;
-        _firestoreService = firestoreService;
-
-        ChechSingIn(authClient);
-    }
-
-    private static async void ChechSingIn(FirebaseAuthClient authClient) {
-
-        if(authClient.User != null) {
-            await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
-        }
-    }
+    [ObservableProperty]
+    bool _isRegisterPopUpVisible;
 
     [RelayCommand]
     async Task Login() {
 
-        await _authClient.SignInWithEmailAndPasswordAsync(LocalUser.Email, LocalUser.Password);
-
-        await _firestoreService.CreateUserAsync(LocalUser, _authClient.User.Uid);
+        await firebaseAuth.SignInWithEmailAndPasswordAsync("admin@admin.com", "123456");
 
         await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+
     }
 
     [RelayCommand]
     void Register() {
-        _messenger.Send("OpenPopUp");
 
+        IsRegisterPopUpVisible = true;
     }
 
     // Popup Commands
     [RelayCommand]
     void ClosePopUp() {
-        _messenger.Send("ClosePopUp");
+
+        IsRegisterPopUpVisible = false;
     }
 
     [RelayCommand]
     async Task SignUp() {
 
-        await _authClient.CreateUserWithEmailAndPasswordAsync(
+        await firebaseAuth.CreateUserWithEmailAndPasswordAsync(
             LocalUser.Email,
             LocalUser.Password,
             LocalUser.Username);
 
-        _messenger.Send("ClosePopUp");
+        IsRegisterPopUpVisible = false;
+
+        await firestoreService.CreateAsync(LocalUser,
+            "Users",
+             firebaseAuth.User.Uid);
 
         await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
     }

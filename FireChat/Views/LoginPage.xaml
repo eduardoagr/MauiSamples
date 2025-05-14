@@ -5,7 +5,8 @@
     xmlns:controls="clr-namespace:FireChat.Controls"
     xmlns:icons="clr-namespace:FireChat.Icons"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
-    BackgroundColor="#FF478D65"
+    BackgroundColor="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
+                                      Light={DynamicResource White}}"
     HideSoftInputOnTapped="True">
 
     <VerticalStackLayout
@@ -19,7 +20,8 @@
             FontSize="32"
             HorizontalTextAlignment="Center"
             Text="Welcome to FireChat"
-            TextColor="{StaticResource Black}" />
+            TextColor="{AppThemeBinding Dark={DynamicResource White},
+                                        Light={DynamicResource PrimaryDarkText}}" />
 
         <!--  App Logo  -->
         <Image
@@ -44,7 +46,7 @@
 
         <!--  Login Button  -->
         <Button
-            BackgroundColor="{StaticResource MidnightBlue}"
+            BackgroundColor="#512bd4"
             Command="{Binding LoginCommand}"
             CornerRadius="8"
             FontAttributes="Bold"
@@ -59,7 +61,7 @@
             Margin="0,20,0,0"
             HorizontalOptions="Center"
             Text="Do not have an account, register"
-            TextColor="{StaticResource MidnightBlue}">
+            TextColor="#512bd4">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer
                     x:DataType="vm:LoginPageViewModel"

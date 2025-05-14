@@ -1,9 +1,10 @@
-﻿
-
-namespace FireChat;
+﻿namespace FireChat;
 
 public static class MauiProgram {
     public static MauiApp CreateMauiApp() {
+
+        SyncfusionLicenseProvider.RegisterLicense(Credentials.SyncfusionKey);
+
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
@@ -13,6 +14,8 @@ public static class MauiProgram {
             .ConfigureFonts(fonts => {
                 fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialSymbol");
                 fonts.AddFont("MauiMaterialAssets.ttf", "MauiMaterial");
+                fonts.AddFont("segoeui.ttf", "Segoe UI");
+                fonts.AddFont("OpenSansRegular.ttf", "OpenSans");
             });
 
         // Apply the global borderless handler
@@ -39,7 +42,11 @@ public static class MauiProgram {
         builder.Services.AddSingleton<AppShell>();
         builder.Services.AddSingleton<AppShellViewModel>();
 
+        builder.Services.AddSingleton(FilePicker.Default);
+
         builder.Services.AddTransient<RegisterPopUp>();
+
+        builder.Services.AddTransient<LoadingPopUp>();
 
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddTransient<LoginPageViewModel>();

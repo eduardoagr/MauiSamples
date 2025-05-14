@@ -3,20 +3,164 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:control="clr-namespace:FireChat.Controls"
+    xmlns:icons="clr-namespace:FireChat.Icons"
     xmlns:local="clr-namespace:FireChat"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:vm="clr-namespace:FireChat.ViewModels">
 
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="False" />
-    </Shell.BackButtonBehavior>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem>
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="MaterialSymbol"
+                    Glyph="{Static icons:MateriallFontGlyphs.Search}"
+                    Color="{AppThemeBinding Dark={DynamicResource White},
+                                                Light={DynamicResource PrimaryDarkText}}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <!--  CUSTOM TITLE BAR (MOBILE ONLY)  -->
+    <Shell.TitleView>
+        <Grid
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="10"
+            IsVisible="{OnIdiom Desktop=False,
+                                Phone=True}">
 
-    <Grid>
-        <Label
-            FontSize="32"
-            HorizontalOptions="Center"
-            Text="Chat Page"
-            TextColor="{StaticResource Black}"
-            VerticalOptions="Center" />
+            <!--  Avatar  -->
+            <sfavatar:SfAvatarView
+                AvatarName="{Binding LocalUser.Username}"
+                AvatarSize="Small"
+                Background="CornflowerBlue"
+                ContentType="Initials"
+                CornerRadius="30"
+                HeightRequest="30"
+                Stroke="{AppThemeBinding Dark={DynamicResource White},
+                                         Light={DynamicResource PrimaryDarkText}}"
+                StrokeThickness="1"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+
+            <!--  Status  -->
+            <VerticalStackLayout
+                Grid.Column="1"
+                VerticalOptions="Center">
+                <Label Text="frfreqf" />
+                <Label Text="Online" />
+            </VerticalStackLayout>
+
+        </Grid>
+    </Shell.TitleView>
+
+    <!--  TOP SECTION (Search + Avatar + Status)  -->
+    <Grid
+        ColumnDefinitions="{OnIdiom Desktop='250,*',
+                                    Phone='*'}"
+        ColumnSpacing="10"
+        IsVisible="{OnIdiom Desktop=True,
+                            Phone=True}"
+        RowDefinitions="Auto,*">
+
+        <!--  Search Bar (Visible Only on Desktop)  -->
+        <Border
+            Margin="20"
+            BackgroundColor="Transparent"
+            HeightRequest="30"
+            IsVisible="{OnIdiom Phone=False,
+                                Desktop=True}"
+            Stroke="{AppThemeBinding Dark={DynamicResource White},
+                                     Light={DynamicResource PrimaryDarkText}}"
+            StrokeShape="RoundRectangle 8"
+            StrokeThickness="1"
+            VerticalOptions="Center">
+
+            <HorizontalStackLayout Padding="10,0,0,0">
+                <!--  Search Icon  -->
+                <Label
+                    Margin="0,8,0,0"
+                    FontAttributes="Bold"
+                    FontFamily="MaterialSymbol"
+                    FontSize="Micro"
+                    Text="{Static icons:MateriallFontGlyphs.Search}"
+                    TextColor="{AppThemeBinding Dark={DynamicResource White},
+                                                Light={DynamicResource PrimaryDarkText}}"
+                    VerticalTextAlignment="Start" />
+
+                <!--  Search Entry  -->
+                <Entry
+                    BackgroundColor="Transparent"
+                    Placeholder="Search or start a new chat"
+                    TextColor="{AppThemeBinding Dark={DynamicResource White},
+                                                Light={DynamicResource PrimaryDarkText}}"
+                    VerticalTextAlignment="Start" />
+            </HorizontalStackLayout>
+        </Border>
+
+        <!--  Avatar + Username + Online Status  -->
+        <Border
+            Grid.Column="1"
+            IsVisible="{OnIdiom Desktop=True,
+                                Phone=False}">
+            <Grid ColumnDefinitions="Auto,Auto,*">
+                <sfavatar:SfAvatarView
+                    Margin="10"
+                    AvatarName="{Binding LocalUser.Username}"
+                    AvatarSize="Large"
+                    Background="CornflowerBlue"
+                    ContentType="Initials"
+                    CornerRadius="60"
+                    FontFamily="MaterialSymbol"
+                    FontSize="20"
+                    HeightRequest="40"
+                    Stroke="{AppThemeBinding Dark={DynamicResource White},
+                                             Light={DynamicResource PrimaryDarkText}}"
+                    StrokeThickness="1"
+                    VerticalOptions="Center"
+                    WidthRequest="40" />
+
+                <!--  User Info  -->
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    VerticalOptions="Center">
+                    <Label Text="frfreqf" />
+                    <Label Text="Online" />
+                </VerticalStackLayout>
+
+                <!--  Button (Search Icon)  -->
+                <Button
+                    x:Name="ProfileContainerGrid"
+                    Grid.Column="2"
+                    Margin="0,0,20,0"
+                    BorderColor="Transparent"
+                    BorderWidth="0"
+                    Clicked="ProfileContainerGrid_Clicked"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center">
+                    <Button.ImageSource>
+                        <FontImageSource
+                            FontFamily="MaterialSymbol"
+                            Glyph="{Static icons:MateriallFontGlyphs.Search}"
+                            Color="{AppThemeBinding Dark={DynamicResource White},
+                                                    Light={DynamicResource PrimaryDarkText}}" />
+                    </Button.ImageSource>
+                </Button>
+
+            </Grid>
+        </Border>
+
+        <!--  FRIENS (ONLY DESKTOP)  -->
+        <CollectionView
+            Grid.Row="1"
+            BackgroundColor="Green"
+            IsVisible="{OnIdiom Desktop=True,
+                                Phone=False}" />
+        <!--  CHAT AREA (Always Visible)  -->
+        <CollectionView
+            Grid.Row="1"
+            Grid.Column="1"
+            BackgroundColor="Blue"
+            IsVisible="{OnIdiom Desktop=True,
+                                Phone=True}" />
     </Grid>
 
 </ContentPage>

@@ -1,25 +1,29 @@
-﻿using CommunityToolkit.Maui.Views;
-
-namespace FireChat;
+﻿namespace FireChat;
 
 public partial class AppShell : Shell {
 
     readonly WeakReferenceMessenger _messenger;
+    readonly AppShellViewModel _appShellViewModel;
 
-    public AppShell(AppShellViewModel appShellViewModel, WeakReferenceMessenger messenger) {
+    public AppShell(AppShellViewModel shellViewModel,
+        WeakReferenceMessenger messenger) {
 
+        _appShellViewModel = shellViewModel;
         InitializeComponent();
 
-        BindingContext = appShellViewModel;
+        BindingContext = _appShellViewModel;
         _messenger = messenger;
 
         messenger.Register<string>(this, (recipient, message) => {
             switch(message) {
-                case "OpenProfile":
+                case "OpenProfilePopUp":
                     UserProfilePopup.IsOpen = true;
                     break;
                 case "SavePopUpContent":
                     UserProfilePopup.IsOpen = false;
+                    break;
+                case "OpenAvatarSeletionPopUp":
+                    AvatarSeletionPopUp.IsOpen = true;
                     break;
                 default:
                     break;
@@ -27,32 +31,37 @@ public partial class AppShell : Shell {
         });
     }
 
-    private void AvatarImage_PointerEntered(object sender, PointerEventArgs e) {
 
-        AvatarViewSetUp(Icons.MateriallFontGlyphs.Add_a_photo, Colors.DarkGray, sender);
+
+    private void AvatarPointerGeture_PointerEntered(object sender, PointerEventArgs e) {
+
+        AvatarViewSetUp(Colors.DarkGrey, sender);
     }
 
-    private void AvatarImage_PointerExited(object sender, PointerEventArgs e) {
+    private void AvatarPointerGeture_PointerExited(object sender, PointerEventArgs e) {
 
-        AvatarViewSetUp(Icons.MateriallFontGlyphs.Add_a_photo, Colors.Transparent, sender);
-
+        AvatarViewSetUp(Color.FromArgb("#6495ed"), sender);
     }
 
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e) {
+    private void AvatarTapGesture_Tapped(object sender, TappedEventArgs e) {
 
-        if(sender is AvatarView avatarView) {
-            AvatarPopUp.RelativeView = avatarView; // Attach popup to AvatarView
-            AvatarPopUp.IsOpen = true; // Open popup
+        if(sender is SfAvatarView avatarView) {
+            AvatarOptionsPopUp.RelativeView = avatarView; // Attach popup to AvatarView
+            AvatarOptionsPopUp.IsOpen = true; // Open popup
         }
-
     }
 
-    private void AvatarViewSetUp(string glyph, Color BackgroudColor, object sender) {
+    private void AvatarViewSetUp(Color BackgroudColor, object sender) {
 
-        if(sender is AvatarView avatarView) {
-            avatarView.Text = glyph;
-            avatarView.BackgroundColor = BackgroudColor;
+        if(sender is SfAvatarView avatarView) {
+            avatarView.Background = BackgroudColor;
         }
-
     }
+
+    /*    private void AvatarsBorder_Tapped(object sender, TappedEventArgs e) {
+
+            if(sender is Border border) {
+                border.BackgroundColor = Colors.Red;
+            }
+        }*/
 }

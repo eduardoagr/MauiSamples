@@ -6,8 +6,6 @@ public partial class App : Application {
 
     public App(MainWindow mainWindow) {
 
-        SyncfusionLicenseProvider.RegisterLicense(Credentials.SyncfusionKey);
-
         InitializeComponent();
         WindowInstance = mainWindow;
     }

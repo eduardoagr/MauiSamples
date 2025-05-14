@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 namespace FireChat.Handlers;
 
 public static class BorderlessEntryHandler {
+
     public static void ApplyCustomHandler() {
 
         EntryHandler.Mapper.AppendToMapping("Borderless", (handler, view) => {
@@ -23,6 +24,7 @@ public static class BorderlessEntryHandler {
 #if WINDOWS
             handler.PlatformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
             handler.PlatformView.Background = null;
+            handler.PlatformView.Style = null;
 #endif
         });
     }

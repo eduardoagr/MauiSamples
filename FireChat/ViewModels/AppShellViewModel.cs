@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿
 
 namespace FireChat.ViewModels;
 
@@ -9,12 +9,18 @@ public partial class AppShellViewModel : BaseViewModel {
     readonly IMediaPicker _mediaPicker;
 
     [ObservableProperty]
-    LocalUser localUser = new();
+    public partial LocalUser LocalUser { get; set; } = new();
 
     [ObservableProperty]
-    string? _selectedItem;
+    public partial UserAvatarOptions? SelectedItem { get; set; }
 
-    public ObservableCollection<string>? OptionsColletion { get; set; }
+    [ObservableProperty]
+    public partial AvatarCharacter SelectedAvatar { get; set; }
+
+    public ObservableCollection<UserAvatarOptions>? OptionsColletion { get; set; } = [];
+
+    public List<AvatarCharacter> AvatarCharacters { get; set; } =
+        [.. Enum.GetValues<AvatarCharacter>()];
 
     public AppShellViewModel(FirebaseAuthClient authClient, WeakReferenceMessenger messenger, IMediaPicker mediaPicker) {
 
@@ -22,7 +28,7 @@ public partial class AppShellViewModel : BaseViewModel {
         _messenger = messenger;
         _mediaPicker = mediaPicker;
 
-        OptionsColletion = GetOptions();
+        GetOptions();
     }
 
 
@@ -31,13 +37,13 @@ public partial class AppShellViewModel : BaseViewModel {
 
         _authClient.SignOut();
 
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
 
     [RelayCommand]
     void OpenProfile() {
 
-        _messenger.Send("OpenProfile");
+        _messenger.Send("OpenProfilePopUp");
 
     }
 
@@ -48,19 +54,28 @@ public partial class AppShellViewModel : BaseViewModel {
     }
 
     [RelayCommand]
+    void AvatarSelectionPopup() {
+        _messenger.Send("OpenAvatarSeletionPopUp");
+    }
+
+    [RelayCommand]
     void SelectedOption() {
 
-        Action action = SelectedItem switch {
-            "Take picture" => async () => await TakePicture(),
-            "Remove picture" => RemovePicture,
-            "Change picture" => async () => await ChangePicture(),
-            _ => () => throw new InvalidOperationException("Invalid selection.")
+        Action action = SelectedItem?.Name switch {
+            "Change avatar" => AvatarSelectionPopup,
+            "Remove avatar" => RemovePicture,
+            _ => () => throw new InvalidOperationException("Invalid selection."),
         };
 
         // Execute the selected action
         action();
+    }
+
+    [RelayCommand]
+    void AvatarSelected() {
 
     }
+
 
     private async Task ChangePicture() {
 
@@ -80,38 +95,49 @@ public partial class AppShellViewModel : BaseViewModel {
         LocalUser.ImagePath = string.Empty;
     }
 
-    private async Task TakePicture() {
+    //private async Task TakePicture() {
 
-        if(_mediaPicker.IsCaptureSupported) {
+    //    if(_mediaPicker.IsCaptureSupported) {
 
-            var photo = await _mediaPicker.CapturePhotoAsync();
+    //        var photo = await _mediaPicker.CapturePhotoAsync();
 
-            if(photo != null) {
+    //        if(photo != null) {
 
-                string newFileName = $"{LocalUser.Username}-{DateTime.Today.ToString("yyyy-MM-dd")}.jpg";
-                string localFilePath = Path.Combine(FileSystem.AppDataDirectory, newFileName);
+    //            string newFileName = $"{LocalUser.Username}-{DateTime.Today:yyyy-MM-dd}.jpg";
+    //            string localFilePath = Path.Combine(FileSystem.CacheDirectory, newFileName);
 
-                using Stream sourceStream = await photo.OpenReadAsync();
-                using FileStream localFileStream = File.OpenWrite(localFilePath);
+    //            using Stream sourceStream = await photo.OpenReadAsync();
+    //            using FileStream localFileStream = File.OpenWrite(localFilePath);
 
-                await sourceStream.CopyToAsync(localFileStream);
+    //            await sourceStream.CopyToAsync(localFileStream);
 
-                Debug.WriteLine($"Image saved to: {localFilePath}");
+    //            Debug.WriteLine($"Image saved to: {localFilePath}");
+    //            LocalUser.ImagePath = localFilePath;
+    //        }
+    //    }
+    //    else {
+    //        Debug.WriteLine("Camera not supported");
+    //    }
+    //}
 
-                LocalUser.ImagePath = new Uri(localFilePath).AbsoluteUri;
+    public void GetOptions() {
 
-            }
-        }
-        else {
-            Debug.WriteLine("Camera not supported");
+        var options = new List<string> {
+            "Change avatar",
+            "Remove avatar"
+        };
+
+        OptionsColletion!.Clear();
+
+        for(int i = 0; i < options.Count; i++) {
+            OptionsColletion.Add(new UserAvatarOptions {
+
+                Name = options[i],
+                IsFirst = i == 0,
+            });
         }
     }
 
-    public ObservableCollection<string> GetOptions() {
 
-        OptionsColletion = ["Take picture", "Remove picture", "Change picture"];
-
-        return OptionsColletion;
-    }
 
 }

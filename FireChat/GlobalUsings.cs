@@ -1,7 +1,11 @@
 ﻿global using CommunityToolkit.Maui;
+global using CommunityToolkit.Maui.Views;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.Messaging;
+
+global using Syncfusion.Maui.Core;
+global using System.Collections.ObjectModel;
 
 global using Firebase.Auth;
 global using Firebase.Auth.Providers;
@@ -25,6 +29,8 @@ global using Syncfusion.Licensing;
 global using Syncfusion.Maui.Core.Hosting;
 global using Syncfusion.Maui.Popup;
 
+global using System.Collections;
 global using System.Diagnostics;
+global using System.Globalization;
 global using System.Threading.Tasks;
 

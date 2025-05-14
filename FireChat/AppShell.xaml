@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:FireChat.Controls"
     xmlns:icons="clr-namespace:FireChat.Icons"
+    xmlns:local="clr-namespace:FireChat"
     xmlns:model="clr-namespace:FireChat.Model"
     xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:FireChat.Views"
     xmlns:vm="clr-namespace:FireChat.ViewModels"
@@ -19,18 +21,23 @@
         ContentTemplate="{DataTemplate views:WelcomePage}"
         FlyoutItemIsVisible="False"
         Route="WelcomePage"
-        Shell.NavBarIsVisible="False"
-        Shell.FlyoutBehavior="Disabled" />
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False" />
 
     <ShellContent
+        x:DataType="vm:LoginPageViewModel"
         ContentTemplate="{DataTemplate views:LoginPage}"
         FlyoutItemIsVisible="False"
         Route="LoginPage"
-        Shell.FlyoutBehavior="Disabled" />
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False" />
 
     <ShellContent
+        x:DataType="vm:ChatPageViewModel"
         ContentTemplate="{DataTemplate views:ChatPage}"
-        Route="ChatPage">
+        Route="ChatPage"
+        Shell.NavBarIsVisible="{OnIdiom Desktop=False,
+                                        Phone=True}">
         <ShellContent.Icon>
             <FontImageSource
                 FontFamily="MaterialSymbol"
@@ -40,14 +47,6 @@
         </ShellContent.Icon>
     </ShellContent>
 
-    <TabBar IsVisible="{OnIdiom Phone=True, Desktop=False}">
-        <Tab
-            Title="Chats"
-            Icon="cat.png" />
-        <Tab
-            Title="Dogs"
-            Icon="dog.png" />
-    </TabBar>
 
     <Shell.FlyoutFooter>
         <Grid
@@ -70,87 +69,68 @@
             </Image>
 
             <sfPopup:SfPopup
-                x:Name="AvatarPopUp"
-                AbsoluteX="-20"
-                AbsoluteY="-20"
-                AutoSizeMode="Height"
-                RelativePosition="AlignTop"
-                ShowFooter="False"
-                ShowHeader="False"
-                ShowOverlayAlways="False"
-                WidthRequest="150">
-
-                <sfPopup:SfPopup.PopupStyle>
-                    <sfPopup:PopupStyle
-                        CornerRadius="8"
-                        HasShadow="True"
-                        PopupBackground="{AppThemeBinding Dark={DynamicResource Gray1000},
-                                                          Light={DynamicResource White}}" />
-                </sfPopup:SfPopup.PopupStyle>
-
+                x:Name="AvatarOptionsPopUp"
+                AbsoluteY="-18"
+                Style="{DynamicResource AvatarOptionsPopupStyle}">
                 <sfPopup:SfPopup.ContentTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="vm:AppShellViewModel">
                         <CollectionView
                             x:Name="OptionCollectionView"
                             Margin="10"
                             ItemsSource="{Binding OptionsColletion}"
                             SelectedItem="{Binding SelectedItem}"
-                            SelectionChangedCommand="{Binding SelectedOptionCommand}"
-                            SelectionMode="Single" />
+                            SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:UserAvatarOptions">
+                                    <VerticalStackLayout>
+                                        <Label
+                                            Padding="5"
+                                            Text="{Binding Name}"
+                                            VerticalTextAlignment="Center" />
+                                        <BoxView
+                                            BackgroundColor="{AppThemeBinding Dark={DynamicResource White},
+                                                                              Light={DynamicResource PrimaryDarkText}}"
+                                            HeightRequest="1"
+                                            IsVisible="{Binding IsFirst}" />
+                                        <VerticalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                x:DataType="vm:AppShellViewModel"
+                                                Command="{Binding SelectedOptionCommand, Source={RelativeSource AncestorType={x:Type vm:AppShellViewModel}}}" />
+                                        </VerticalStackLayout.GestureRecognizers>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </DataTemplate>
                 </sfPopup:SfPopup.ContentTemplate>
             </sfPopup:SfPopup>
 
-
             <sfPopup:SfPopup
                 x:Name="UserProfilePopup"
-                AbsoluteX="-30"
                 AbsoluteY="30"
                 AcceptCommand="{Binding SavePopUpContentCommand}"
-                HeaderHeight="90"
-                HeightRequest="400"
-                RelativePosition="AlignTopRight"
                 RelativeView="{x:Reference UserProfileImage}"
-                ShowFooter="True"
-                ShowHeader="True"
-                ShowOverlayAlways="False"
-                WidthRequest="400">
+                Style="{DynamicResource UserProfilePopupStyle}">
 
                 <sfPopup:SfPopup.HeaderTemplate>
-                    <DataTemplate x:DataType="model:LocalUser">
-                        <toolkit:AvatarView
-                            Margin="20,10,0,0"
-                            BorderColor="{AppThemeBinding Dark={DynamicResource Gray1000},
-                                                          Light={DynamicResource PrimaryDarkText}}"
-                            BorderWidth="1"
-                            CornerRadius="80"
-                            FontFamily="MaterialSymbol"
-                            FontSize="20"
-                            HeightRequest="80"
-                            HorizontalOptions="Start"
-                            ImageSource="{Binding ImagePath}"
-                            Text="{Static icons:MateriallFontGlyphs.Add_a_photo}"
-                            TextColor="{AppThemeBinding Dark={DynamicResource White},
-                                                        Light={DynamicResource PrimaryDarkText}}"
-                            WidthRequest="80">
-                            <toolkit:AvatarView.GestureRecognizers>
+                    <DataTemplate x:DataType="vm:AppShellViewModel">
+                        <sfavatar:SfAvatarView
+                            x:Name="AvatarImage"
+                            AvatarCharacter="{Binding LocalUser.ImagePath}"
+                            Style="{DynamicResource AvatarStyle}">
+                            <sfavatar:SfAvatarView.GestureRecognizers>
                                 <PointerGestureRecognizer
-                                    x:Name="AvatarImage"
-                                    x:DataType="vm:AppShellViewModel"
-                                    PointerEntered="AvatarImage_PointerEntered"
-                                    PointerExited="AvatarImage_PointerExited" />
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                            </toolkit:AvatarView.GestureRecognizers>
-                        </toolkit:AvatarView>
+                                    x:Name="AvatarPointerGeture"
+                                    PointerEntered="AvatarPointerGeture_PointerEntered"
+                                    PointerExited="AvatarPointerGeture_PointerExited" />
+                                <TapGestureRecognizer
+                                    x:Name="AvatarTapGesture"
+                                    Tapped="AvatarTapGesture_Tapped" />
+                            </sfavatar:SfAvatarView.GestureRecognizers>
+                        </sfavatar:SfAvatarView>
                     </DataTemplate>
                 </sfPopup:SfPopup.HeaderTemplate>
-                <sfPopup:SfPopup.PopupStyle>
-                    <sfPopup:PopupStyle
-                        CornerRadius="0"
-                        HasShadow="True"
-                        PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
-                                                          Light={DynamicResource White}}" />
-                </sfPopup:SfPopup.PopupStyle>
+
                 <sfPopup:SfPopup.ContentTemplate>
                     <DataTemplate>
                         <Grid
@@ -161,58 +141,92 @@
                             VerticalOptions="Center">
 
                             <controls:MaterialEntry
+                                x:DataType="vm:AppShellViewModel"
                                 Hint="Username"
-                                HintColor="{AppThemeBinding Dark={DynamicResource White},
-                                                            Light={DynamicResource Black}}"
                                 HorizontalOptions="Start"
                                 ShowIcon="False"
-                                Text="{Binding LocalUser.Username}"
-                                TextColor="{AppThemeBinding Dark={DynamicResource White},
-                                                            Light={DynamicResource Black}}" />
+                                Text="{Binding LocalUser.Username}" />
+
                             <controls:MaterialEntry
                                 Grid.Row="1"
+                                x:DataType="vm:AppShellViewModel"
                                 Hint="Status"
-                                HintColor="{AppThemeBinding Dark={DynamicResource White},
-                                                            Light={DynamicResource Black}}"
                                 HorizontalOptions="Start"
                                 ShowIcon="False"
-                                Text="{Binding LocalUser.StatusMessage}"
-                                TextColor="{AppThemeBinding Dark={DynamicResource White},
-                                                            Light={DynamicResource Black}}" />
+                                Text="{Binding LocalUser.StatusMessage}" />
                         </Grid>
                     </DataTemplate>
                 </sfPopup:SfPopup.ContentTemplate>
                 <sfPopup:SfPopup.FooterTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="vm:AppShellViewModel">
                         <Grid>
                             <Border
                                 Margin="20"
                                 HorizontalOptions="End"
                                 StrokeShape="RoundRectangle 10"
+                                StrokeThickness="2"
                                 VerticalOptions="Center"
                                 WidthRequest="100">
-                                <Border.Shadow>
-                                    <Shadow
-                                        Brush="{AppThemeBinding Dark={DynamicResource White},
-                                                                Light={DynamicResource PrimaryDarkText}}"
-                                        Opacity="0.5"
-                                        Radius="15"
-                                        Offset="5,5" />
-                                </Border.Shadow>
-
                                 <Button
-                                    Padding="10"
-                                    BackgroundColor="Transparent"
                                     Command="{Binding SignOutCommand}"
-                                    FontSize="16"
-                                    Text="Log out"
-                                    TextColor="{AppThemeBinding Dark={DynamicResource White},
-                                                                Light={DynamicResource PrimaryDarkText}}" />
+                                    Style="{StaticResource LogoutButtonStyle}" />
                             </Border>
-
                         </Grid>
                     </DataTemplate>
                 </sfPopup:SfPopup.FooterTemplate>
+            </sfPopup:SfPopup>
+
+            <sfPopup:SfPopup
+                x:Name="AvatarSeletionPopUp"
+                AbsoluteX="90"
+                AbsoluteY="-350"
+                HeightRequest="400"
+                RelativePosition="AlignTopRight"
+                RelativeView="{Reference AvatarOptionsPopUp}"
+                ShowHeader="False"
+                ShowOverlayAlways="False"
+                WidthRequest="300">
+                <sfPopup:SfPopup.PopupStyle>
+                    <sfPopup:PopupStyle
+                        CornerRadius="8"
+                        HasShadow="True"
+                        PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
+                                                          Light={DynamicResource White}}" />
+                </sfPopup:SfPopup.PopupStyle>
+                <sfPopup:SfPopup.ContentTemplate>
+                    <DataTemplate x:DataType="vm:AppShellViewModel">
+                        <CollectionView ItemsSource="{Binding AvatarCharacters}"
+                                        SelectedItem="{Binding SelectedAvatar}"
+                                        SelectionMode="Single"
+                                        SelectionChangedCommand="{Binding AvatarSelectedCommand}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout
+                                    Orientation="Vertical"
+                                    Span="3" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="{x:Type sfavatar:AvatarCharacter}">
+                                    <Grid
+                                        Padding="2"
+                                        BindingContext="{Binding .}">
+
+                                        <sfavatar:SfAvatarView
+                                            AvatarCharacter="{Binding .}"
+                                            Background="#786FAB"
+                                            ContentType="Default"
+                                            CornerRadius="25"
+                                            HeightRequest="50"
+                                            HorizontalOptions="Center"
+                                            Stroke="{AppThemeBinding Dark={DynamicResource White},
+                                                                     Light={DynamicResource PrimaryDarkText}}"
+                                            StrokeThickness="1"
+                                            WidthRequest="50" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </DataTemplate>
+                </sfPopup:SfPopup.ContentTemplate>
             </sfPopup:SfPopup>
         </Grid>
     </Shell.FlyoutFooter>

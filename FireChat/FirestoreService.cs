@@ -18,39 +18,31 @@
             }
         }
 
-        public async Task CreateUserAsync(LocalUser user, string Id) {
+        public async Task CreateAsync<T>(T entity, string collectionName, string documentId) {
             if(db == null) {
                 await InitializeFirebaseAsync(); // Ensure Firestore is initialized
             }
 
-            user.Id = Id; // Set the user ID
+            DocumentReference docRef = db!.Collection(collectionName).Document(documentId);
 
-            DocumentReference docRef = db!.Collection("users").Document(user.Id);
-            await docRef.SetAsync(new Dictionary<string, object> {
-
-                { "Id", user.Id },
-                { "Username", user.Username },
-                { "Email", user.Email },
-                { "ImagePath", user.ImagePath },
-                { "StatusMessage", user.StatusMessage },
-                { "OnlineStatus", user.OnlineStatus }
-
-            });
-        }
-
-        public async Task UpdateUserAsync(LocalUser user) {
-            if(db == null) {
-                await InitializeFirebaseAsync();
+            // Set the Id property of the entity to the documentId
+            var idProperty = typeof(T).GetProperty("Id");
+            if(idProperty != null && idProperty.PropertyType == typeof(string)) {
+                idProperty.SetValue(entity, documentId);
             }
 
-            DocumentReference docRef = db!.Collection("users").Document(user.Id);
-            await docRef.UpdateAsync(new Dictionary<string, object>
-            {
-                { "Username", user.Username },
-                { "ImagePath", user.ImagePath },
-                { "StatusMessage", user.StatusMessage }
 
-            });
+            // Convert object to dictionary using reflection
+            Dictionary<string, object> entityData = [];
+            foreach(var prop in typeof(T).GetProperties()) {
+
+                if(prop.Name != "Password" && prop.Name != "ConfirmPassword") {
+
+                    entityData[prop.Name] = prop.GetValue(entity)!;
+                }
+            }
+
+            await docRef.SetAsync(entityData);
         }
     }
 }

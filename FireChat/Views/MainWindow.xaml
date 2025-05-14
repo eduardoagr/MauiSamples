@@ -6,7 +6,7 @@
 
     <Window.TitleBar>
         <TitleBar
-            Background="#556934B6"
+            Background="Transparent"
             HeightRequest="32" />
     </Window.TitleBar>
 </Window>

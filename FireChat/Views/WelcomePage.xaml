@@ -10,13 +10,6 @@
 
     <skia:SKLottieView
         AnimationCompleted="SKLottieView_AnimationCompleted"
-        Source="wait.json">
-        <skia:SKLottieView.Behaviors>
-            <toolkit:EventToCommandBehavior
-                Command="{Binding CheckAuthCommand}"
-                EventName="AnimationCompleted" />
-        </skia:SKLottieView.Behaviors>
-
-    </skia:SKLottieView>
+        Source="Waiting.json"/>
 
 </ContentPage>

@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
@@ -440,5 +442,75 @@
         <Setter Property="LeadingViewPosition" Value="Outside" />
         <Setter Property="OutlineCornerRadius" Value="8" />
     </Style>
+
+    <Style
+        x:Key="AvatarOptionsPopupStyle"
+        TargetType="sfPopup:SfPopup">
+        <Setter Property="WidthRequest" Value="150" />
+        <Setter Property="ShowFooter" Value="False" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="ShowOverlayAlways" Value="False" />
+        <Setter Property="AutoSizeMode" Value="Both" />
+        <Setter Property="RelativePosition" Value="AlignTop" />
+        <Setter Property="PopupStyle">
+            <Setter.Value>
+                <sfPopup:PopupStyle
+                    CornerRadius="8"
+                    HasShadow="True"
+                    PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
+                                                      Light={DynamicResource White}}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="UserProfilePopupStyle"
+        TargetType="sfPopup:SfPopup">
+        <Setter Property="HeaderHeight" Value="90" />
+        <Setter Property="HeightRequest" Value="400" />
+        <Setter Property="ShowFooter" Value="True" />
+        <Setter Property="ShowHeader" Value="True" />
+        <Setter Property="ShowOverlayAlways" Value="False" />
+        <Setter Property="PopupStyle">
+            <Setter.Value>
+                <sfPopup:PopupStyle
+                    CornerRadius="8"
+                    HasShadow="True"
+                    PopupBackground="{AppThemeBinding Dark={DynamicResource PrimaryDarkText},
+                                                      Light={DynamicResource White}}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="AvatarStyle"
+        TargetType="sfavatar:SfAvatarView">
+        <Setter Property="Background" Value="#6495ed" />
+        <Setter Property="Margin" Value="20,10,0,0" />
+        <Setter Property="AvatarCharacter" Value="Avatar10" />
+        <Setter Property="AvatarSize" Value="Large" />
+        <Setter Property="CornerRadius" Value="80" />
+        <Setter Property="FontFamily" Value="MaterialSymbol" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="WidthRequest" Value="80" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Dark={DynamicResource White}, Light={DynamicResource PrimaryDarkText}}" />
+    </Style>
+
+    <Style
+        x:Key="LogoutButtonStyle"
+        TargetType="Button">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={DynamicResource PrimaryDarkText}, Light={DynamicResource White}}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Text" Value="Log out" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={DynamicResource White}, Light={DynamicResource PrimaryDarkText}}" />
+    </Style>
+
+
+
+
 
 </ResourceDictionary>

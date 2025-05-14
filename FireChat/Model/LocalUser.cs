@@ -1,87 +1,37 @@
-﻿namespace FireChat.Model {
+﻿namespace FireChat.Model;
 
-    [FirestoreData]
-    public partial class LocalUser : ObservableObject {
+[FirestoreData]
+public partial class LocalUser : ObservableObject {
 
-        private string _id;
-        private string _username;
-        private string _email;
-        private string _password;
-        private string _confirmPassword;
-        private string _imagePath;
-        private string _statusMessage = "Hey there! I'm using FireChat!";
-        private bool _onlineStatus = true;
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string Id { get; set; }
 
-        [FirestoreProperty]
-        public string Id {
-            get => _id;
-            set {
-                _id = value;
-                OnPropertyChanged(nameof(Id));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string Username { get; set; }
 
-        [FirestoreProperty]
-        public string Username {
-            get => _username;
-            set {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string Email { get; set; }
 
-        [FirestoreProperty]
-        public string Email {
-            get => _email;
-            set {
-                _email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string Password { get; set; }
 
-        [FirestoreProperty]
-        public string Password {
-            get => _password;
-            set {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string ConfirmPassword { get; set; }
 
-        [FirestoreProperty]
-        public string ConfirmPassword {
-            get => _confirmPassword;
-            set {
-                _confirmPassword = value;
-                OnPropertyChanged(nameof(ConfirmPassword));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string ImagePath { get; set; }
 
-        [FirestoreProperty]
-        public string ImagePath {
-            get => _imagePath;
-            set {
-                _imagePath = value;
-                OnPropertyChanged(nameof(ImagePath));
-            }
-        }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial string StatusMessage { get; set; } = "Hey there! I'm using FireChat!";
 
-        [FirestoreProperty]
-        public string StatusMessage {
-            get => _statusMessage;
-            set {
-                _statusMessage = value;
-                OnPropertyChanged(nameof(StatusMessage));
-            }
-        }
-
-        [FirestoreProperty]
-        public bool OnlineStatus {
-            get => _onlineStatus;
-            set {
-                _onlineStatus = value;
-                OnPropertyChanged(nameof(OnlineStatus));
-            }
-        }
-    }
+    [FirestoreProperty]
+    [ObservableProperty]
+    public partial bool OnlineStatus { get; set; } = true;
 }
